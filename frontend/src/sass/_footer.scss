@@ -1,0 +1,82 @@
+.footer {
+  background-color: $color-grey-dark-1;
+  grid-row: 3/4;
+  padding: 5rem;
+  font-size: 1.2rem;
+  color: black;
+
+  &__links-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  &__social-media-list {
+    list-style: none;
+    display: flex;
+    text-decoration: none;
+    justify-content: space-between;
+  }
+  &__social-media-item {
+    padding: 0 0.4rem;
+  }
+
+  &__social-media-item a {
+    font-size: 3.5rem;
+    color: #363636;
+    transition: 0.2s;
+
+    :hover {
+      color: violet;
+    }
+  }
+
+  &__social-media-box {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+
+    .guarantee {
+      height: 10rem;
+      width: 10rem;
+      display: block;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  &__mavigation-title {
+    font-size: 1.4rem;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    padding: 0.4rem 0;
+  }
+
+  &__item a {
+    color: black;
+    text-decoration: none;
+  }
+
+  &__item a:hover {
+    text-decoration: underline;
+  }
+
+  &__info-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+  }
+
+  &__designer {
+    color: #071a52;
+  }
+}

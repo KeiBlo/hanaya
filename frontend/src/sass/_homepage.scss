@@ -1,0 +1,205 @@
+.home-page {
+  &__header {
+    height: 80vh;
+    background-image: url('../assets/img/bouquet.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+
+    @include respond(tab-port) {
+      height: 50vh;
+      margin-top: 3rem;
+    }
+
+    .heading-primary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &--main {
+        font-size: 6rem;
+        color: #fff;
+        font-family: 'Dancing Script', cursive;
+        line-height: 6rem;
+        font-style: italic;
+      }
+      &--sub {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 3rem;
+        letter-spacing: 0.3rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    .btn-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 40%;
+
+      &__btn {
+        width: 18rem;
+        font-size: 1.4rem;
+        background: transparent;
+        padding: 0.8rem 1rem;
+        text-transform: uppercase;
+        border: 1px solid #fff;
+        color: #fff;
+        text-decoration: none;
+        margin: 1rem;
+      }
+
+      &__btn:hover {
+        background-color: #393b3c;
+      }
+    }
+  }
+
+  .collection-sm {
+    margin: 8rem 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include respond(phone) {
+      flex-direction: column;
+    }
+  }
+
+  .card {
+    border: 1px #e6e6e6 solid;
+    border-top: 0;
+    text-align: center;
+    line-height: 2.5rem;
+    flex-basis: 25%;
+    margin-left: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include respond(phone) {
+      margin: 1rem 0;
+    }
+
+    &__img {
+      width: 100%;
+      vertical-align: top;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      object-fit: cover;
+      height: 20vw;
+
+      @include respond(phone) {
+        height: 35vw;
+      }
+      &:hover {
+        filter: alpha(opacity=80);
+        opacity: 0.8;
+      }
+    }
+
+    &__title {
+      text-transform: uppercase;
+      font-family: 'Helvetica', sans-serif;
+      letter-spacing: 0.2rem;
+      padding: 1rem;
+    }
+
+    &__content {
+      font-size: 1.4rem;
+      padding: 0 1rem;
+      font-family: 'Helvetica', 'Tahoma', sans-serif;
+      font-weight: 300;
+    }
+
+    &__btn {
+      text-decoration: none;
+      display: inline-block;
+      color: black;
+      padding: 0.5rem 3rem;
+      border: 1px solid $font-color-primary;
+      margin: 1rem 0;
+      align-self: center;
+
+      &:hover {
+        background-color: #393b3c;
+        color: #fff;
+      }
+    }
+  }
+
+  .collection-lg {
+    display: flex;
+    flex-basis: 40%;
+    margin: 8rem 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include respond(phone) {
+      flex-direction: column;
+    }
+
+    .card {
+      flex-basis: 40%;
+      &__img {
+        width: 100%;
+        object-fit: cover;
+        height: 35vw;
+      }
+
+      &__content {
+        padding: 0 7rem;
+      }
+    }
+  }
+
+  .line {
+    font-size: 1.7rem;
+    letter-spacing: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .line:before,
+  .line:after {
+    content: '';
+    flex: 1 1;
+    border-bottom: 1px solid #dadada;
+    margin: auto;
+  }
+  .line:before {
+    margin-right: 3rem;
+  }
+  .line:after {
+    margin-left: 3rem;
+  }
+
+  .delivery-info {
+    text-align: center;
+    margin: 3rem auto 2rem;
+    width: 80%;
+
+    &__content {
+      padding: 1rem 3rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  .bouquetes {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+    &__box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

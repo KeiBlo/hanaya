@@ -1,0 +1,65 @@
+@import '_mixins.scss';
+
+// COLOR VARIABLES
+$font-color-primary: #393b3c;
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f1f1f1;
+$color-grey-light-2: #ffffff;
+
+$color-grey-dark-1: #f0f0f2;
+$color-grey-dark-2: #bbbbbb;
+
+$primary-color: #17a2b8;
+$dark-color: #343a40;
+$light-color: #f4f4f4;
+$danger-color: #dc3545;
+$success-color: #28a745;
+
+// FONT VARIABLES
+$font-primary: 'Montserrat', sans-serif;
+
+//BASIC SETUP
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //1rem = 10px. 10px/16px = 62.5%
+  font-family: $font-primary;
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    //1rem = 8px, 8/16 = 50%
+    font-size: 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px, 12/16
+  }
+}
+
+.container {
+  font-family: $font-primary;
+  color: $font-color-primary;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: #ffffff;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: 15rem 1fr 31rem;
+}
+
+ul {
+  list-style: none;
+}
