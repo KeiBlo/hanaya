@@ -1,6 +1,6 @@
-import React, {Fragment, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Spinner from '../components/spinner'
 import Product from '../components/product'
 import Meta from '../components/meta'
@@ -10,13 +10,13 @@ import flowerCollectionImg from '../assets/img/japanese-collection.jpg'
 import weddingCollectionImg from '../assets/img/wedding-collection.jpg'
 import ramperCollectionImg from '../assets/img/hamper.jpg'
 import plantCollectionImg from '../assets/img/new-plants-lower-block.jpg'
-import {listTopProducts} from '../redux/actions/productActions'
+import { listTopProducts } from '../redux/actions/productActions'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
 
   const topProductsList = useSelector((state) => state.topProductsList)
-  const {loading, error, topProducts} = topProductsList
+  const { loading, error, topProducts } = topProductsList
 
   useEffect(() => {
     dispatch(listTopProducts())

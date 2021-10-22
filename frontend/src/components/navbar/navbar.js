@@ -1,14 +1,14 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../../redux/actions/userActions'
+import { Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logout } from '../../redux/actions/userActions'
 import SearchBox from '../search-box'
 
-const Navbar = ({toggleDropDown, hidden}) => {
+const Navbar = ({ toggleDropDown, hidden }) => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo} = userLogin
+  const { userInfo } = userLogin
 
   const logoutHandler = () => {
     dispatch(logout())
@@ -16,7 +16,7 @@ const Navbar = ({toggleDropDown, hidden}) => {
   return (
     <div className='navbar'>
       <div className='navbar__search'>
-        <Route render={({history}) => <SearchBox history={history} />} />
+        <Route render={({ history }) => <SearchBox history={history} />} />
       </div>
 
       <div className='navbar__logo-box'>
@@ -72,27 +72,27 @@ const Navbar = ({toggleDropDown, hidden}) => {
       <div className='navbar__navigation'>
         <ul className='navigation__list'>
           <li className='navigation__item'>
-            <Link to='/birthday' className='navigation__link'>
+            <Link to='/category/birthday' className='navigation__link'>
               Birthday
             </Link>
           </li>
           <li className='navigation__item'>
-            <Link to='/romance' className='navigation__link'>
+            <Link to='/category/newbaby' className='navigation__link'>
               New Baby
             </Link>
           </li>
           <li className='navigation__item'>
-            <Link to='/romance' className='navigation__link'>
+            <Link to='/category/romance' className='navigation__link'>
               Romance
             </Link>
           </li>
           <li className='navigation__item'>
-            <Link to='/birthday' className='navigation__link'>
+            <Link to='/category/anniversary' className='navigation__link'>
               Anniversary
             </Link>
           </li>
           <li className='navigation__item'>
-            <Link to='/romance' className='navigation__link'>
+            <Link to='/category/congradulations' className='navigation__link'>
               Congradulations
             </Link>
           </li>
