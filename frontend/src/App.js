@@ -20,32 +20,39 @@ import AdminProductListScreen from './screens/AdminProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import SearchResultScreen from './screens/SearchResultScreen'
+import ContactUsScreen from './screens/ContactUsScreen'
 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      <Route path='/order/:id' component={OrderScreen} />
-      <Route path='/shipping' component={ShippingScreen} />
-      <Route path='/payment' component={PaymentScreen} />
-      <Route path='/placeorder' component={PlaceOrderScreen} />
-      <Route path='/register' component={RegisterScreen} />
-      <Route path='/profile' component={ProfileScreen} />
-      <Route path='/login' component={LoginScreen} />
-      <Route path='/category/birthday' component={ProductsListScreen} />
-      <Route path='/category/newbaby' component={ProductsListScreen} />
-      <Route path='/category/romance' component={ProductsListScreen} />
-      <Route path='/category/anniversary' component={ProductsListScreen} />
-      <Route path='/category/congradulations' component={ProductsListScreen} />
-      <Route path='/product/:id' component={ProductDetailsScreen} />
-      <Route path='/cart/:id?' component={CartScreen} />
-      <Route path='/admin/userlist' component={UserListScreen} />
-      <Route path='/admin/user/:id/edit' component={UserEditScreen} />
-      <Route path='/admin/productlist' component={AdminProductListScreen} />
-      <Route path='/admin/orderlist' component={OrderListScreen} />
-      <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
-      <Route path='/search/:keyword' component={SearchResultScreen} />
-      <Route path='/' component={HomeScreen} exact />
+      <div style={{ minHeight: '80vh' }}>
+        <Route path='/order/:id' component={OrderScreen} />
+        <Route path='/shipping' component={ShippingScreen} />
+        <Route path='/payment' component={PaymentScreen} />
+        <Route path='/placeorder' component={PlaceOrderScreen} />
+        <Route path='/register' component={RegisterScreen} />
+        <Route path='/profile' component={ProfileScreen} />
+        <Route path='/contact' component={ContactUsScreen} />
+        <Route path='/login' component={LoginScreen} />
+        <Route path='/category/birthday' component={ProductsListScreen} />
+        <Route path='/category/newbaby' component={ProductsListScreen} />
+        <Route path='/category/romance' component={ProductsListScreen} />
+        <Route path='/category/anniversary' component={ProductsListScreen} />
+        <Route
+          path='/category/congradulations'
+          component={ProductsListScreen}
+        />
+        <Route path='/product/:id' component={ProductDetailsScreen} />
+        <Route path='/cart/:id?' component={CartScreen} />
+        <Route path='/admin/userlist' component={UserListScreen} />
+        <Route path='/admin/user/:id/edit' component={UserEditScreen} />
+        <Route path='/admin/productlist' component={AdminProductListScreen} />
+        <Route path='/admin/orderlist' component={OrderListScreen} />
+        <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
+        <Route path='/search/:keyword' component={SearchResultScreen} />
+        <Route path='/' component={HomeScreen} exact />
+      </div>
       <Footer />
     </Router>
   )

@@ -1,5 +1,4 @@
 //PRODUCT DETAILS PAGE
-
 .product-detail {
   display: flex;
   padding: 3rem;
@@ -10,15 +9,32 @@
     align-items: center;
   }
 
-  &__container {
+  &__right {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+  }
+
+  .details-list {
+    &__item {
+      font-size: 1.3rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+
+      &--name {
+        padding: 1rem 0;
+      }
+
+      &--info {
+        font-size: 1.8rem;
+        font-weight: 400;
+        padding: 0 1rem;
+      }
+    }
   }
 }
 
 //PRODUCTS PAGE
-
 .product-page--wrapper {
   display: flex;
   justify-content: center;
@@ -173,12 +189,17 @@
 
 .contact {
   width: 50rem;
-  margin: 3rem auto;
-
+  margin: 0 auto 3rem;
   position: relative;
 
   &__title {
     text-align: center;
+    margin: 0 0 1rem 0;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    margin: 1rem 0;
   }
 
   &__form {
@@ -199,14 +220,46 @@
     background: none;
     background-color: white;
     color: $sub-color;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding: 1rem 1rem 1rem 0.5rem;
     display: block;
     width: 100%;
     border-radius: 0;
     border: 1px solid black;
+    margin: 0 0 0.1rem 0;
+  }
+  &__textarea {
+    overflow: auto;
+    height: 12rem;
+  }
+}
 
-    margin: 1rem 0;
+.invalid {
+  border: 1px solid red;
+}
+
+.submit-btn {
+  margin: 2rem 0.1rem;
+  min-width: 1.5rem;
+  width: auto;
+  height: 5rem;
+  letter-spacing: 0.5px;
+  line-height: 5rem;
+  padding: 0 2.5rem 0 2.5rem;
+  font-size: 1.5rem;
+  background-color: #03045e;
+  color: white;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: white;
+    color: #03045e;
+    border: 1px solid #03045e;
   }
 }
 

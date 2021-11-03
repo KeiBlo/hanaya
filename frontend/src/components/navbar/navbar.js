@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { logout } from '../../redux/actions/userActions'
 import SearchBox from '../search-box'
 
@@ -72,29 +72,34 @@ const Navbar = ({ toggleDropDown, hidden }) => {
       <div className='navbar__navigation'>
         <ul className='navigation__list'>
           <li className='navigation__item'>
-            <Link to='/category/birthday' className='navigation__link'>
+            <NavLink
+              to='/category/birthday'
+              activeClassName='is-active'
+              exact={true}>
+              {' '}
               Birthday
-            </Link>
+            </NavLink>
           </li>
           <li className='navigation__item'>
-            <Link to='/category/newbaby' className='navigation__link'>
+            <NavLink to='/category/newbaby' activeClassName='is-active'>
+              {' '}
               New Baby
-            </Link>
+            </NavLink>
           </li>
           <li className='navigation__item'>
-            <Link to='/category/romance' className='navigation__link'>
+            <NavLink to='/category/romance' activeClassName='is-active'>
               Romance
-            </Link>
+            </NavLink>
           </li>
           <li className='navigation__item'>
-            <Link to='/category/anniversary' className='navigation__link'>
+            <NavLink to='/category/anniversary' activeClassName='is-active'>
               Anniversary
-            </Link>
+            </NavLink>
           </li>
           <li className='navigation__item'>
-            <Link to='/category/congradulations' className='navigation__link'>
+            <NavLink to='/category/congradulations' activeClassName='is-active'>
               Congradulations
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

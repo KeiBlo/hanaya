@@ -23,36 +23,51 @@
 
 //IMAGE GALLERY
 .img-gallery {
-  width: 50rem;
-
+  max-width: 40rem;
+  box-shadow: 0 0 0.5rem #ccc;
   @include respond(tab-port) {
     width: 100%;
   }
 
   &__main {
-    width: 40rem;
     align-self: center;
-
+    max-width: 50rem;
+    min-width: 30rem;
+    overflow: hidden;
+    margin: 0 auto;
     &--img-lg {
       animation: fade 2s;
       width: 100%;
+      height: auto;
+      max-height: 40rem;
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
     }
   }
 
   &__secondary {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 
     &--wrapper {
-      height: 20rem;
-      width: 20rem;
-      padding: 0.5rem;
+      height: 10rem;
+      width: 10rem;
+      padding: 0.1rem;
       cursor: pointer;
     }
     &--img-sm {
       width: 100%;
+      border-radius: 0.5rem;
+      opacity: 0.7;
     }
   }
+}
+
+.active {
+  opacity: 1;
+  border: 0.1rem solid lightseagreen;
 }
 
 @keyframes fade {
@@ -67,7 +82,6 @@
 //ORDER-FORM
 .order-from__wraper {
   width: 40%;
-
   text-transform: uppercase;
   font-size: 1.2rem;
   padding: 1rem;
@@ -165,13 +179,6 @@
   }
 }
 
-//PRODUCT-DETAILS
-
-.product-details {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 //CART DROPDOWN
 .cart-dropdown {
   position: absolute;
@@ -204,12 +211,29 @@
   }
 }
 
-//DETAILS
+//PRODUCT-DETAILS SCREEN
+
+.product-details {
+  display: flex;
+  justify-content: space-evenly;
+  @include respond(phone) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 .details {
+  &__content-box {
+    width: 50rem;
+  }
+
   &__nav {
     padding-bottom: 2rem;
+    @include respond(phone) {
+      padding-top: 2rem;
+    }
   }
+
   &__nav-list {
     display: flex;
     border-bottom: 1px solid black;
@@ -220,7 +244,6 @@
     list-style: none;
   }
   &__nav-link {
-    color: #545454;
     text-decoration: none;
   }
   &__nav-link:hover {
@@ -246,6 +269,10 @@
   .is-active {
     color: #000000;
     font-weight: 700;
+  }
+
+  &-list__item {
+    padding: 0.5rem 0;
   }
 }
 
@@ -277,46 +304,38 @@
 ////ALERT
 
 .alert {
-  height: 1rem;
-  padding: 0.5rem;
-  margin: 0.1rem 0;
+  margin: 0 0 0.5rem 0;
   opacity: 0.9;
   background: #fff;
   color: #000;
 }
 
 .alert-primary {
-  background: $primary-color;
-  color: #fff;
+  color: #007bff;
 }
 
 .alert-light {
-  background: $light-color;
-  color: #000;
+  color: #f8f9fa;
 }
 
 .alert-dark {
-  background: $dark-color;
-  color: #fff;
+  color: #343a40;
 }
 
 .alert-danger {
-  background: $danger-color;
-  color: #fff;
+  color: #dc3545;
 }
 
 .alert-success {
-  background: $success-color;
-  color: #fff;
-}
-
-.alert-white {
-  background: #fff;
-  color: #000;
-  border: #ccc solid 1px;
+  color: #28a745;
 }
 
 ////ERRORS
 .error {
   color: $danger-color;
+}
+
+///RATING
+.rating {
+  padding: 0 1rem;
 }

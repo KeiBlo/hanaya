@@ -1,6 +1,6 @@
 //Navigation
 .navbar {
-  padding: 2rem;
+  padding: 1rem 0 2rem 0;
   grid-row: 1/2;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -109,7 +109,7 @@
   &__navigation {
     grid-column: 1/4;
     grid-row: 2/3;
-    padding-top: 3rem;
+    padding-top: 2rem;
 
     @include respond(phone) {
       padding-top: 0.5rem;
@@ -146,15 +146,10 @@
     @include respond(phone) {
       padding-top: 0.5rem;
     }
-
-    .navigation__link {
-      color: #000;
-      text-decoration: none;
-    }
-
-    .navigation__link:hover {
-      color: #fc5185;
-      cursor: pointer;
-    }
   }
+}
+
+.is-active {
+  color: #fc5185;
+  cursor: pointer;
 }
