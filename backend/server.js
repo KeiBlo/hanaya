@@ -2,9 +2,11 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
+import cors from 'cors'
 
 // import userRoutes from './routes/userRoutes.js'
 // import profileRoutes from './routes/profileRoutes.js'
+import contactFormRoutes from './routes/contactFormRoutes.js'
 
 dotenv.config()
 
@@ -14,9 +16,11 @@ const app = express()
 
 //Init Middleware
 app.use(express.json())
+app.use(cors())
 
 //Define Routes
 app.use('/api/products', productRoutes)
+app.use('/api/email', contactFormRoutes)
 
 // app.use('/api/users', userRoutes)
 // app.use('/api/profile', profileRoutes)

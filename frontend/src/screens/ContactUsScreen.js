@@ -1,19 +1,26 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 import Alert from '../components/alert'
+
 const ContactUsScreen = () => {
   const {
     register,
     handleSubmit,
-    watch,
     trigger,
     formState: { errors },
     reset,
   } = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data)
-    console.log(errors)
+  const config = {
+    headers: {
+      'Contetn-Type': 'application/json',
+    },
+  }
+
+  const onSubmit = async (data) => {
+    await axios.post('http://localhost:7777/api/email', data, config)
+
     reset()
   }
 
@@ -79,7 +86,8 @@ const ContactUsScreen = () => {
           {...register('phoneNumber', {
             required: 'Phone Number is Required',
             pattern: {
-              value: /^0[789]0-?d{4}-?d{4}$/,
+              value:
+                /^\s*(?:\+?(\d{1,3}))?[- (]*(\d{3})[- )]*(\d{3})[- ]*(\d{4})(?: *[x/#]{1}(\d+))?\s*$/,
               message: 'Invalid phone number',
             },
           })}
@@ -94,8 +102,8 @@ const ContactUsScreen = () => {
 
         <label className='contact__label'>Message</label>
         <textarea
-          className={`contact__textarea ${errors.phoneNumber && 'invalid'}`}
-          {...register('textarea', {
+          className={`contact__textarea ${errors.clientMessage && 'invalid'}`}
+          {...register('clientMessage', {
             required: 'Message is Required',
             minLength: {
               value: 10,
@@ -109,10 +117,10 @@ const ContactUsScreen = () => {
           placeholder='Start typing...'
           type='text'
           onKeyUp={() => {
-            trigger('textarea')
+            trigger('clientMessage')
           }}></textarea>
-        {errors.textarea && (
-          <Alert alertType='danger'>{errors.textarea.message}</Alert>
+        {errors.clientMessage && (
+          <Alert alertType='danger'>{errors.clientMessage.message}</Alert>
         )}
         <input type='submit' className='submit-btn' value='Send message' />
       </form>
