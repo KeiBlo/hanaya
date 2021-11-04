@@ -55,7 +55,9 @@ export const searchProducts =
     try {
       dispatch({ type: PRODUCT_SEARCH_REQUEST })
 
-      const { data } = await axios.get(`/api/products?keyword=${keyword}`)
+      const { data } = await axios.get(
+        `/api/products/search?keyword=${keyword}`
+      )
 
       dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: data })
     } catch (error) {

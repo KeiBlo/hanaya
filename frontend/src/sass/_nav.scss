@@ -21,13 +21,6 @@
     grid-column: 1/2;
     margin: 0 auto;
 
-    &__input {
-      margin-right: -1.8rem;
-      font-size: 1.4rem;
-      height: 2rem;
-      padding: 1.4rem 1rem;
-      display: inline-block;
-    }
     @include respond(tab-port) {
       grid-column: 6/8;
     }

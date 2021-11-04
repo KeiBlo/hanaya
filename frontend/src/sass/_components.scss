@@ -308,6 +308,7 @@
   opacity: 0.9;
   background: #fff;
   color: #000;
+  font-size: 1.5rem;
 }
 
 .alert-primary {
@@ -338,4 +339,53 @@
 ///RATING
 .rating {
   padding: 0 1rem;
+}
+
+/////SEARCH BOX
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__input {
+    font-family: inherit;
+    font-size: 1.3rem;
+    border: none;
+    height: 3rem;
+    padding: 1.6rem 2rem;
+    border-radius: 100px;
+    width: 93%;
+    transition: all 0.2s;
+    margin-right: -2.5rem;
+    background-color: #f4f2f2;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: #f0eeee;
+    }
+  }
+
+  &__input:focus + &__btn {
+    background-color: #f0eeee;
+  }
+
+  &__btn {
+    border-radius: 100%;
+    border: none;
+    background-color: #f4f2f2;
+
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  &__icon {
+    fill: #999;
+    height: 2.1rem;
+    width: 2.1rem;
+  }
 }

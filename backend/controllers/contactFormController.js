@@ -6,7 +6,7 @@ const sendClientEmail = async (req, res) => {
   const { name, lastName, email, phoneNumber, clientMessage } = req.body
 
   try {
-    const data = await sesTest(
+    const data = await sendMessage(
       'keiblokhin@gmail.com',
       name,
       lastName,
@@ -14,13 +14,13 @@ const sendClientEmail = async (req, res) => {
       phoneNumber,
       clientMessage
     )
-    res.json({ message: 'successful', data: data })
+    res.json({ message: 'successful', data })
   } catch (error) {
     console.error(error)
   }
 }
 
-const sesTest = (
+const sendMessage = (
   emailTo,
   name,
   lastName,

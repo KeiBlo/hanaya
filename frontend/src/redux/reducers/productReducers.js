@@ -136,12 +136,12 @@ export const productReviewCreateReducer = (state = {}, action) => {
   }
 }
 
-export const productSearchReducer = (state = { products: [] }, action) => {
+export const productSearchReducer = (state = { searchResults: [] }, action) => {
   switch (action.type) {
     case PRODUCT_SEARCH_REQUEST:
-      return { loading: true, products: [] }
+      return { loading: true, searchResults: [] }
     case PRODUCT_SEARCH_SUCCESS:
-      return { loading: false, products: action.payload }
+      return { loading: false, searchResults: action.payload }
     case PRODUCT_SEARCH_FAIL:
       return { loading: false, error: action.payload }
     default:

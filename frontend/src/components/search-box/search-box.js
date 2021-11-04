@@ -1,24 +1,31 @@
-import React, {useState} from 'react'
-
-const SearchBox = ({history}) => {
+import React, { useState } from 'react'
+import { ReactComponent as MagnifyingGlass } from '../../assets/svg/search.svg'
+const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState('')
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (keyword.trimEnd()) {
+    if (keyword.trim()) {
       history.push(`/search/${keyword}`)
+      setKeyword('')
     } else {
       history.push('/')
     }
   }
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className='search'>
       <input
+        className='search__input'
         type='text'
+        value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder='Search Products...'
+        placeholder='Search Products'
       />
-      <button type='submit'>Search</button>
+      <button className='search__btn' type='submit'>
+        <svg className='search__icon'>
+          <MagnifyingGlass />
+        </svg>
+      </button>
     </form>
   )
 }
