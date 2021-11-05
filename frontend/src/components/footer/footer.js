@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import paymentMethodsImg from '../../assets/img/paymentmethods-min.png'
 import guaranteeImg from '../../assets/img/happiness-guarantee-new-min.png'
 
@@ -29,12 +29,12 @@ const Footer = () => {
         </div>
 
         <div className='footer__navigation'>
-          <h2 className='footer__mavigation-title'>About Us</h2>
+          <h2 className='footer__mavigation-title'>Info</h2>
           <ul className='footer__list'>
             <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                Our Story
-              </a>
+              <Link to='/aboutus' className='footer__link'>
+                About Us
+              </Link>
             </li>
             <li className='footer__item'>
               <a href='!#' className='footer__link'>
