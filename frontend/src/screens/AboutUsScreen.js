@@ -48,7 +48,7 @@ const AboutUsScreen = () => {
         {' '}
         <h2 className='section-team__title'>Our Team</h2>
         <div className='team'>
-          <div className='container'>
+          <div className='team-container'>
             <div className='box'>
               <div className='imgBx'>
                 <img src={teamOneImg} />
@@ -56,37 +56,44 @@ const AboutUsScreen = () => {
 
               <div className='content'>
                 <div>
-                  <h2>Image Title</h2>
-                  <p>Image Description</p>
+                  <h2>Micheal Fox</h2>
+                  <p>CEO</p>
                 </div>
               </div>
             </div>
             <div className='box'>
               <div className='imgBx'>
-                <img src={teamOneImg} />
+                <img src={teamTwoImg} />
               </div>
 
               <div className='content'>
                 <div>
-                  <h2>Image Title</h2>
-                  <p>Image Description</p>
+                  <h2>Jane Dudly</h2>
+                  <p>Florist manager</p>
                 </div>
               </div>
             </div>
             <div className='box'>
               <div className='imgBx'>
-                <img src={teamOneImg} />
+                <img src={teamThreeImg} />
               </div>
 
               <div className='content'>
                 <div>
-                  <h2>Image Title</h2>
-                  <p>Image Description</p>
+                  <h2>Angela Brown</h2>
+                  <p>Designer</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <p className='section-team__description'>
+          And we want you to love them too, so we do our best to give you the
+          best possible flower delivery service. From farm-fresh flowers,
+          beautiful floral design and prompt delivery we are the best option for
+          flower arrangements. Best service at reasonable price, always fresh
+          flowers.
+        </p>
       </div>
     </div>
   )
