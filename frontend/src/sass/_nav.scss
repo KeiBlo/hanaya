@@ -137,6 +137,10 @@
     text-transform: uppercase;
     line-height: 1.8rem;
 
+    :hover {
+      color: #fc5185;
+    }
+
     @include respond(phone) {
       padding-top: 0.5rem;
     }

@@ -193,12 +193,9 @@
   position: relative;
 
   &__title {
-    text-transform: uppercase;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
     text-align: center;
-    font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-    padding: 0.5rem;
     margin: 5rem;
   }
 
@@ -291,11 +288,9 @@
   text-align: center;
 
   &__title {
-    text-transform: uppercase;
-    font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;
-    font-weight: 900;
-    font-size: 2.5rem;
-    word-spacing: 0.5rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
     padding: 0.5rem;
     margin: 5rem 0 1rem 0;
   }
@@ -311,16 +306,15 @@
     line-height: 2;
     margin: 0.5rem auto;
     max-width: 80%;
-    font-size: 1.8rem;
-    font-family: 'Helvetica', 'Tahoma', sans-serif;
-    font-weight: 300;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
   }
 
   .services__wrapper {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 8rem;
+    margin-top: 5rem;
     @include respond(phone) {
       flex-direction: column;
       align-items: center;
@@ -340,40 +334,35 @@
         padding: 1rem;
         margin: 0.5rem;
         font-weight: 600;
-        font-size: 2em;
+        font-size: 1.6rem;
         text-transform: uppercase;
         color: white;
       }
 
       &__text {
         margin: 0.5rem;
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         line-height: 1.5;
         padding: 1rem;
-        font-family: 'Helvetica', 'Tahoma', sans-serif;
-        font-weight: 300;
       }
     }
   }
 
   .section-team {
     background-color: #393b3c;
+    height: 80vh;
 
     &__description {
       line-height: 2;
       color: white;
-      margin: 0.5rem auto;
+      margin: 1rem auto;
       max-width: 80%;
-      font-size: 1.8rem;
-      font-family: 'Helvetica', 'Tahoma', sans-serif;
-      font-weight: 300;
+      font-size: 1.4rem;
+      padding-bottom: 1rem;
     }
 
     &__title {
-      text-transform: uppercase;
-      font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;
-      font-weight: 900;
-      font-size: 2.5rem;
+      font-size: 1.7rem;
       padding-top: 5rem;
       margin: 5rem 0 1rem 0;
       color: white;
@@ -387,8 +376,8 @@
 
       .box {
         position: relative;
-        width: 275px;
-        height: 275px;
+        width: 27.5rem;
+        height: 27.5rem;
         overflow: hidden;
         transition: 0.5s;
         margin: 1rem;
@@ -448,7 +437,7 @@
           transition: 0.5s;
           text-transform: uppercase;
           margin-bottom: 5px;
-          font-size: 20px;
+          font-size: 1.7rem;
           transform: translateY(200px);
         }
 
@@ -456,9 +445,110 @@
           color: #fff;
           transform: translateY(200px);
           transition: 0.5s;
-          font-size: 14px;
+          font-size: 1.4rem;
         }
       }
+    }
+  }
+}
+
+//Faq page
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 80vh;
+
+  .page-opop {
+    font-size: 1.7rem;
+    word-spacing: 0.5rem;
+    padding: 0.5rem;
+    margin: 5rem 0 1rem 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &__icon {
+    fill: #fc5185;
+    height: 2.1rem;
+    width: 2.1rem;
+  }
+
+  &__container {
+    position: absolute;
+    top: 25%;
+    box-shadow: 2px 10px 35px 1px rgba(153, 152, 153, 0.3);
+  }
+
+  &__wrap {
+    background: #272727;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+    h1 {
+      padding: 2rem;
+      font-size: 1.4rem;
+    }
+
+    span {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__dropdown {
+    background: #1c1c1c;
+    color: #fff;
+    width: 100%;
+    padding: 1rem;
+    max-width: 64rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #fc5185;
+    border-top: 1px solid #fc5185;
+
+    p {
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+  }
+}
+
+//Delivery methods
+
+.delivery-methods {
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .delivery-info {
+    padding: 2rem;
+
+    h2 {
+      padding: 1rem 0;
+      font-size: 1.6rem;
+    }
+    p {
+      padding: 0.5rem 0;
+      font-size: 1.5rem;
+    }
+
+    li {
+      padding: 0.2rem 0;
+      font-size: 1.5rem;
     }
   }
 }

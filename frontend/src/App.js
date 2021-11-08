@@ -22,6 +22,8 @@ import OrderListScreen from './screens/OrderListScreen'
 import SearchResultScreen from './screens/SearchResultScreen'
 import ContactUsScreen from './screens/ContactUsScreen'
 import AboutUsScreen from './screens/AboutUsScreen'
+import FaqScreen from './screens/FaqScreen'
+import DeliveryMethodsScreen from './screens/DeliveryMethodsScreen'
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/aboutus' component={AboutUsScreen} />
+        <Route path='/delivery' component={DeliveryMethodsScreen} />
+        <Route path='/faq' component={FaqScreen} />
         <Route path='/contact' component={ContactUsScreen} />
         <Route path='/login' component={LoginScreen} />
         <Route path='/category/birthday' component={ProductsListScreen} />

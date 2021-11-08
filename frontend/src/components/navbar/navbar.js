@@ -33,13 +33,15 @@ const Navbar = ({ toggleDropDown, hidden }) => {
                 <span className='navbar__user-account-link'>
                   {userInfo.name}
                 </span>
-                <li>
+                <li className='navigation__item'>
                   <Link to='/profile'>Profile</Link>
                 </li>
-                <li onClick={logoutHandler}>Logout</li>
+                <li className='navigation__item' onClick={logoutHandler}>
+                  Logout
+                </li>
               </ul>
             ) : (
-              <Link to='/login'>
+              <Link className='navigation__item' to='/login'>
                 <i className='far fa-user'></i>
                 <span className='navbar__user-account-link'>SING IN</span>
               </Link>
@@ -50,20 +52,20 @@ const Navbar = ({ toggleDropDown, hidden }) => {
                 <span className='navbar__user-account-link' id='adminmenu'>
                   Admin
                 </span>
-                <li>
+                <li className='navigation__item'>
                   <Link to='/admin/userlist'>Users</Link>
                 </li>
-                <li>
+                <li className='navigation__item'>
                   <Link to='/admin/products'>Products</Link>
                 </li>
-                <li>
+                <li className='navigation__item'>
                   <Link to='/admin/orderList'>Orders</Link>
                 </li>
               </ul>
             )}
           </li>
 
-          <li className='navbar__user-account-item' onClick={toggleDropDown}>
+          <li className='navigation__item' onClick={toggleDropDown}>
             <i className='fas fa-shopping-bag'></i>
             <span className='navbar__user-account-link'>CART</span>
           </li>

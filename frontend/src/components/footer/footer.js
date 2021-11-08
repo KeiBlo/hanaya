@@ -37,14 +37,9 @@ const Footer = () => {
               </Link>
             </li>
             <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                The Flower Diaries
-              </a>
-            </li>
-            <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                Refer-A-Friend
-              </a>
+              <Link to='/faq' className='footer__link'>
+                Help & FAQ's
+              </Link>
             </li>
           </ul>
         </div>
@@ -57,14 +52,9 @@ const Footer = () => {
               </Link>
             </li>
             <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                Help & FAQ's
-              </a>
-            </li>
-            <li className='footer__item'>
-              <a href='!#' className='footer__link'>
+              <Link to='/delivery' className='footer__link'>
                 Delivery Info
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -74,16 +64,6 @@ const Footer = () => {
             <li className='footer__item'>
               <a href='!#' className='footer__link'>
                 100% Happiness Guarantee
-              </a>
-            </li>
-            <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                Flower Care Essentials
-              </a>
-            </li>
-            <li className='footer__item'>
-              <a href='!#' className='footer__link'>
-                Corporate Flowers & Gifts
               </a>
             </li>
           </ul>
