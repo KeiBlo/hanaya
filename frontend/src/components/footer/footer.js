@@ -80,7 +80,9 @@ const Footer = () => {
         <div className='footer__copyrights'>
           <span>
             All rights reserved. Designed by{' '}
-            <span className='footer__designer'>Kei Blokhin</span>.
+            <span className='footer__designer'>
+              <a href='https://github.com/KeiBlo'>Kei Blokhin</a>
+            </span>
             <p>This website is operated by Hanaya.</p>
           </span>
         </div>

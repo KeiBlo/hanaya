@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Alert from '../components/alert'
 import Spinner from '../components/spinner'
-import {getUserDetails, updateUserProfile} from '../redux/actions/userActions'
-import {listMyOrders} from '../redux/actions/orderActions'
+import { getUserDetails, updateUserProfile } from '../redux/actions/userActions'
+import { listMyOrders } from '../redux/actions/orderActions'
+import { USER_UPDATE_PROFILE_RESET } from '../redux/constants/userContstants'
 
-const ProfileScreen = ({location, history}) => {
+const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,22 +17,23 @@ const ProfileScreen = ({location, history}) => {
   const dispatch = useDispatch()
 
   const userDetails = useSelector((state) => state.userDetails)
-  const {loading, error, user} = userDetails
+  const { loading, error, user } = userDetails
 
   const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo} = userLogin
+  const { userInfo } = userLogin
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-  const {success} = userUpdateProfile
+  const { success } = userUpdateProfile
 
   const orderListMy = useSelector((state) => state.orderListMy)
-  const {loading: loadingOrders, error: errorOrders, orders} = orderListMy
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
     } else {
-      if (!user.name) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
         dispatch(listMyOrders())
       } else {
@@ -39,56 +41,51 @@ const ProfileScreen = ({location, history}) => {
         setEmail(user.email)
       }
     }
-  }, [dispatch, history, userInfo, user])
-
+  }, [dispatch, history, userInfo, user, success])
   const submitHandler = (e) => {
     e.preventDefault()
 
     if (password !== confirmPassword) {
       setMessage('Password do not match')
     } else {
-      dispatch(updateUserProfile({id: user._id, name, email, password}))
+      dispatch(updateUserProfile({ id: user._id, name, email, password }))
     }
   }
   return (
-    <div>
-      <div className='sign-up-log-in'>
-        <h2 className='sign-up-log-in__title'>User Profile</h2>
+    <div className='profile-page'>
+      <div className='profile-page__wrapper'>
+        <h2 className='profile-page__wrapper__title'>User Profile</h2>
         {message && <Alert>{message}</Alert>}
         {error && <Alert>{error}</Alert>}
         {success && <Alert>{success}</Alert>}
         {loading && <Spinner />}
-        <span> Log in with your email and password</span>
-        <form className='sign-up-log-in__form' onSubmit={submitHandler}>
+        <span> Edit your user details</span>
+        <form className='profile-page__wrapper__form' onSubmit={submitHandler}>
           <label>Name</label>
           <input
             type='name'
-            className='sign-up-log-in__input'
+            className='profile-page__wrapper__input'
             value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
+            onChange={(e) => setName(e.target.value)}></input>
           <label>Email</label>
           <input
             type='email'
-            className='sign-up-log-in__input'
+            className='profile-page__wrapper__input'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
+            onChange={(e) => setEmail(e.target.value)}></input>
 
           <label>Password</label>
           <input
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='sign-up-log-in__input'
-          ></input>
+            className='profile-page__wrapper__input'></input>
           <label>Confirm password</label>
           <input
             type='password'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className='sign-up-log-in__input'
-          ></input>
+            className='profile-page__wrapper__input'></input>
 
           <div className='buttons'>
             <button className='custom-btn' type='submit'>
@@ -97,8 +94,8 @@ const ProfileScreen = ({location, history}) => {
           </div>
         </form>
       </div>
-      <div>
-        <h2>My Orders</h2>
+      <div className='profile-page__orders-data'>
+        <h2 className='profile-page__orders-data__title'>My Orders</h2>
         {loadingOrders ? (
           <Spinner />
         ) : errorOrders ? (
@@ -124,18 +121,18 @@ const ProfileScreen = ({location, history}) => {
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
-                      <i className='fas fa-times' style={{color: 'red'}}></i>
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
                   <td>
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
-                      <i className='fas fa-times' style={{color: 'red'}}></i>
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
                   <td>
-                    <Link to={`/oreder/${order._id}`}>
+                    <Link to={`/order/${order._id}`}>
                       <button>Details</button>
                     </Link>
                   </td>

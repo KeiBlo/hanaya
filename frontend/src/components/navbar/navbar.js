@@ -5,6 +5,9 @@ import { Link, NavLink } from 'react-router-dom'
 import { logout } from '../../redux/actions/userActions'
 import SearchBox from '../search-box'
 
+import { ReactComponent as CartIcon } from '../../assets/svg/cart.svg'
+import { ReactComponent as UserIcon } from '../../assets/svg/user.svg'
+
 const Navbar = ({ toggleDropDown, hidden }) => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
@@ -29,21 +32,24 @@ const Navbar = ({ toggleDropDown, hidden }) => {
         <ul className='navbar__user-account-list'>
           <li className='navbar__user-account-item'>
             {userInfo ? (
-              <ul>
-                <span className='navbar__user-account-link'>
-                  {userInfo.name}
-                </span>
+              <ul className='navbar__loged-in'>
                 <li className='navigation__item'>
-                  <Link to='/profile'>Profile</Link>
+                  <Link to='/profile'>
+                    <UserIcon className='navbar__icon' /> Profile
+                  </Link>
+                </li>
+                <li className='navigation__item' onClick={toggleDropDown}>
+                  <Link to='/cart'>
+                    <CartIcon className='navbar__icon' /> Cart
+                  </Link>
                 </li>
                 <li className='navigation__item' onClick={logoutHandler}>
-                  Logout
+                  <Link to='/'>Logout</Link>
                 </li>
               </ul>
             ) : (
               <Link className='navigation__item' to='/login'>
-                <i className='far fa-user'></i>
-                <span className='navbar__user-account-link'>SING IN</span>
+                <UserIcon className='navbar__icon' /> SING IN
               </Link>
             )}
 
@@ -63,11 +69,6 @@ const Navbar = ({ toggleDropDown, hidden }) => {
                 </li>
               </ul>
             )}
-          </li>
-
-          <li className='navigation__item' onClick={toggleDropDown}>
-            <i className='fas fa-shopping-bag'></i>
-            <span className='navbar__user-account-link'>CART</span>
           </li>
         </ul>
       </div>

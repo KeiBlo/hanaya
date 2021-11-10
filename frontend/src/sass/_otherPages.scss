@@ -220,7 +220,7 @@
 
   &__input {
     background: none;
-    background-color: white;
+    background-color: #fcfcfd;
     color: $sub-color;
     font-size: 1.5rem;
     padding: 1rem 1rem 1rem 0.5rem;
@@ -549,6 +549,74 @@
     li {
       padding: 0.2rem 0;
       font-size: 1.5rem;
+    }
+  }
+}
+
+//PROFILE PAGE
+.profile-page {
+  width: 75rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+
+  &__wrapper {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    width: 38rem;
+
+    &__title {
+      margin: 1.7rem 0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    label {
+      font-size: 1.4rem;
+    }
+
+    &__form {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: column;
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    &__input {
+      background: none;
+      background-color: #fcfcfd;
+      color: $sub-color;
+      font-size: 1.7rem;
+      padding: 1rem 1rem 1rem 0.5rem;
+      display: block;
+      width: 100%;
+      border-radius: 0;
+      border: 1px solid black;
+
+      margin: 1rem 0;
+
+      .error {
+        color: red;
+      }
+    }
+  }
+
+  &__orders-data {
+    margin: 3rem auto;
+
+    &__title {
+      margin: 1.7rem 0;
+      text-align: center;
     }
   }
 }

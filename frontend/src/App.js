@@ -35,12 +35,13 @@ const App = () => {
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/register' component={RegisterScreen} />
+        <Route path='/login' component={LoginScreen} />
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/aboutus' component={AboutUsScreen} />
         <Route path='/delivery' component={DeliveryMethodsScreen} />
         <Route path='/faq' component={FaqScreen} />
         <Route path='/contact' component={ContactUsScreen} />
-        <Route path='/login' component={LoginScreen} />
+
         <Route path='/category/birthday' component={ProductsListScreen} />
         <Route path='/category/newbaby' component={ProductsListScreen} />
         <Route path='/category/romance' component={ProductsListScreen} />

@@ -117,14 +117,14 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     const {
       userLogin: { userInfo },
-    } = getState
+    } = getState()
 
     const config = {
       headers: {
-        'Contetn-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
+
     const { data } = await axios.get(`/api/users/${id}`, config)
 
     dispatch({
@@ -132,12 +132,16 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       payload: data,
     })
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
     dispatch({
       type: USER_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     })
   }
 }
@@ -159,7 +163,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
     const { data } = await axios.put(`/api/users/profile`, user, config)
-
+    localStorage.setItem('userInfo', JSON.stringify(data))
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,

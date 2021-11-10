@@ -3,8 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
 import cors from 'cors'
-
-// import userRoutes from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 // import profileRoutes from './routes/profileRoutes.js'
 import contactFormRoutes from './routes/contactFormRoutes.js'
 
@@ -21,8 +20,7 @@ app.use(cors())
 //Define Routes
 app.use('/api/products', productRoutes)
 app.use('/api/email', contactFormRoutes)
-
-// app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes)
 // app.use('/api/profile', profileRoutes)
 
 const PORT = process.env.PORT || 7777
