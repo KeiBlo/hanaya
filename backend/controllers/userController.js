@@ -1,11 +1,11 @@
-import asynchandler from 'express-async-handler'
-import generateToken from '../utils/generateToken.js'
-import User from '../models/userModel.js'
+import asyncHandler from "express-async-Handler"
+import generateToken from "../utils/generateToken.js"
+import User from "../models/userModel.js"
 
 //@desc Auth user &  get token
 //@route POST /api/users/login
 //@access Public
-const authUser = asynchandler(async (req, res) => {
+const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
   const user = await User.findOne({ email })
@@ -20,14 +20,14 @@ const authUser = asynchandler(async (req, res) => {
     })
   } else {
     res.status(401)
-    throw new Error('Invalid email or password')
+    throw new Error("Invalid email or password")
   }
 })
 
 //@desc GET user profile
 //@route GET /api/users/profile
 //@access Private
-const getUserProfile = asynchandler(async (req, res) => {
+const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 
   if (user) {
@@ -39,21 +39,21 @@ const getUserProfile = asynchandler(async (req, res) => {
     })
   } else {
     res.status(404)
-    throw new Error('User not found')
+    throw new Error("User not found")
   }
 })
 
 //@desc Register an new user
 //@route POST /api/users
 //@access Public
-const registerUser = asynchandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body
 
   const userExists = await User.findOne({ email })
 
   if (userExists) {
     res.status(400)
-    throw new Error('User already exists')
+    throw new Error("User already exists")
   }
   const user = await User.create({
     email,
@@ -71,18 +71,16 @@ const registerUser = asynchandler(async (req, res) => {
     })
   } else {
     res.status(400)
-    throw new Error('Invalid user data')
+    throw new Error("Invalid user data")
   }
 })
 
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
-const updateUserProfile = asynchandler(async (req, res) => {
-  console.log('working')
-  console.log(user)
+const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
-
+  console.log(user)
   if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
@@ -101,7 +99,7 @@ const updateUserProfile = asynchandler(async (req, res) => {
     })
   } else {
     res.status(404)
-    throw new Error('User not found')
+    throw new Error("User not found")
   }
 })
 

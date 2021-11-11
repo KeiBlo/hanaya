@@ -1,4 +1,5 @@
-//PRODUCT DETAILS PAGE
+////////////////
+//PRODUCT DETAILS SCREEN
 .product-detail {
   display: flex;
   padding: 3rem;
@@ -34,7 +35,8 @@
   }
 }
 
-//PRODUCTS PAGE
+////////////////
+//PRODUCTS SCREEN
 .product-page--wrapper {
   display: flex;
   justify-content: center;
@@ -42,9 +44,9 @@
   padding: 3rem;
 }
 
-//CHECKOUT PAGE
+////////////////
+//CHECKOUT SCREEN
 .checkout__container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -185,116 +187,10 @@
   }
 }
 
-////CONTACT
-
-.contact {
-  width: 50rem;
-  margin: 3rem auto;
-  position: relative;
-
-  &__title {
-    font-size: 1.7rem;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    margin: 5rem;
-  }
-
-  &__label {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-  }
-
-  &__form {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-
-    .buttons {
-      margin: 0 auto;
-    }
-
-    .error {
-      color: red;
-    }
-  }
-
-  &__input {
-    background: none;
-    background-color: #fcfcfd;
-    color: $sub-color;
-    font-size: 1.5rem;
-    padding: 1rem 1rem 1rem 0.5rem;
-    display: block;
-    width: 100%;
-    border-radius: 0;
-    border: 1px solid black;
-    margin: 0 0 0.1rem 0;
-  }
-  &__textarea {
-    overflow: auto;
-    height: 12rem;
-    padding: 0.3rem;
-  }
-}
-
-.invalid {
-  border: 1px solid red;
-}
-
-.submit-btn {
-  margin: 2rem 0.1rem;
-  min-width: 1.5rem;
-  width: auto;
-  height: 5rem;
-  letter-spacing: 0.5px;
-  line-height: 5rem;
-  padding: 0 2.5rem 0 2.5rem;
-  font-size: 1.5rem;
-  background-color: black;
-  color: white;
-  font-family: 'Open Sans Condensed';
-  font-weight: bolder;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-
-  &:hover {
-    background-color: #393b3c;
-    color: #fff;
-  }
-}
-
-////NOT FOUND
-
-.not-found-wrapper {
-  text-align: center;
-  padding: 10rem;
-
-  &__title {
-    font-size: 4rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  &__details {
-    color: $primary-color;
-  }
-}
-
-///ABOUT US  PAGE
-
+////////////////
+//ABOUT US  SCREEN
 .about-us {
-  text-align: center;
-
-  &__title {
-    font-size: 1.7rem;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    padding: 0.5rem;
-    margin: 5rem 0 1rem 0;
-  }
-
+  margin: 3rem auto;
   .underline {
     background-image: linear-gradient(120deg, #ffc6ff, #ffafcc);
     background-repeat: no-repeat;
@@ -322,13 +218,15 @@
 
     .service {
       width: 30%;
-      @include respond(phone) {
-        width: 50%;
-      }
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       margin: 1rem;
       background-color: rgb(238, 167, 238);
       border-radius: 2rem;
+      @include respond(phone) {
+        width: 100%;
+        margin: 0.1rem;
+        border-radius: 0;
+      }
 
       &__title {
         padding: 1rem;
@@ -344,13 +242,24 @@
         font-size: 1.4rem;
         line-height: 1.5;
         padding: 1rem;
+        @include respond(phone) {
+          padding: 1rem 2rem;
+        }
       }
     }
   }
 
   .section-team {
     background-color: #393b3c;
-    height: 80vh;
+
+    h1 {
+      color: #ffff;
+      padding-top: 5rem;
+      margin: 3rem 0 1rem 0;
+      @include respond(phone) {
+        margin: 0;
+      }
+    }
 
     &__description {
       line-height: 2;
@@ -359,13 +268,6 @@
       max-width: 80%;
       font-size: 1.4rem;
       padding-bottom: 1rem;
-    }
-
-    &__title {
-      font-size: 1.7rem;
-      padding-top: 5rem;
-      margin: 5rem 0 1rem 0;
-      color: white;
     }
 
     .team-container {
@@ -392,7 +294,7 @@
         }
 
         .imgBx:before {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
@@ -452,87 +354,82 @@
   }
 }
 
-//Faq page
-.faq-accordion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 80vh;
+////////////////
+//FAQ SCREEN
+.faq {
+  margin-top: 3rem 0;
 
-  .page-opop {
-    font-size: 1.7rem;
-    word-spacing: 0.5rem;
-    padding: 0.5rem;
-    margin: 5rem 0 1rem 0;
-    position: absolute;
-    top: 0;
+  h1 {
+    margin: 3rem 0;
   }
 
-  &__icon {
-    fill: #fc5185;
-    height: 2.1rem;
-    width: 2.1rem;
-  }
-
-  &__container {
-    position: absolute;
-    top: 25%;
-    box-shadow: 2px 10px 35px 1px rgba(153, 152, 153, 0.3);
-  }
-
-  &__wrap {
-    background: #272727;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-
-    h1 {
-      padding: 2rem;
-      font-size: 1.4rem;
-    }
-
-    span {
-      margin-right: 1.5rem;
-    }
-  }
-
-  &__dropdown {
-    background: #1c1c1c;
-    color: #fff;
-    width: 100%;
-    padding: 1rem;
-    max-width: 64rem;
+  .faq-accordion {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #fc5185;
-    border-top: 1px solid #fc5185;
+    justify-content: center;
+    position: relative;
 
-    p {
-      font-size: 1.5rem;
+    &__icon {
+      fill: #fc5185;
+      height: 2.1rem;
+      width: 2.1rem;
+    }
+
+    &__container {
+      position: absolute;
+      top: 80%;
+      box-shadow: 2px 10px 35px 1px rgba(153, 152, 153, 0.3);
+    }
+
+    &__wrap {
+      background: #272727;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+
+      h2 {
+        padding: 2rem;
+        font-size: 1.4rem;
+      }
+
+      span {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &__dropdown {
+      background: #1c1c1c;
+      color: #fff;
+      width: 100%;
       padding: 1rem;
+      max-width: 64rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #fc5185;
+      border-top: 1px solid #fc5185;
+
+      p {
+        font-size: 1.5rem;
+        padding: 1rem;
+      }
     }
   }
 }
 
-//Delivery methods
-
+////////////////
+//DELIVERY METHODS
 .delivery-methods {
   margin: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  h1 {
-    font-size: 1.8rem;
-  }
 
   .delivery-info {
     padding: 2rem;
@@ -553,63 +450,13 @@
   }
 }
 
-//PROFILE PAGE
+////////////////
+//PROFILE SCREEN
 .profile-page {
   width: 75rem;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-
-  &__wrapper {
-    display: flex;
-
-    flex-direction: column;
-    justify-content: center;
-
-    position: relative;
-    width: 38rem;
-
-    &__title {
-      margin: 1.7rem 0;
-      text-align: center;
-    }
-
-    p {
-      font-size: 1.2rem;
-    }
-
-    label {
-      font-size: 1.4rem;
-    }
-
-    &__form {
-      margin-top: 1.4rem;
-      display: flex;
-      flex-direction: column;
-
-      .buttons {
-        display: flex;
-        justify-content: center;
-      }
-    }
-    &__input {
-      background: none;
-      background-color: #fcfcfd;
-      color: $sub-color;
-      font-size: 1.7rem;
-      padding: 1rem 1rem 1rem 0.5rem;
-      display: block;
-      width: 100%;
-      border-radius: 0;
-      border: 1px solid black;
-
-      margin: 1rem 0;
-
-      .error {
-        color: red;
-      }
-    }
-  }
 
   &__orders-data {
     margin: 3rem auto;
@@ -618,5 +465,81 @@
       margin: 1.7rem 0;
       text-align: center;
     }
+  }
+}
+
+////////////////
+//NOT FOUND
+.not-found-wrapper {
+  text-align: center;
+  padding: 10rem;
+
+  &__title {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  &__details {
+    color: $primary-color;
+  }
+}
+
+////////////////
+//PAYMENT SCREEN
+.payment-screen {
+  max-width: 40%;
+  margin: 3rem auto;
+  font-size: 1.2rem;
+  padding: 1rem;
+  @include respond(tab-port) {
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 3.2rem;
+    line-height: 1.125;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .payment-form {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__wrapper {
+      margin: 3rem 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      label {
+        font-weight: 500;
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  input {
+    margin: 1rem;
+  }
+}
+
+////////////////
+//ABOUT US  SCREEN
+.place-order-screen {
+  margin: 2rem auto;
+  max-width: 40%;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-evenly;
   }
 }

@@ -1,0 +1,102 @@
+.form__wrapper {
+  max-width: 40%;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  padding: 1rem;
+
+  @include respond(tab-port) {
+    width: 100%;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 3.2rem;
+    line-height: 1.125;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin: 0.5rem 0;
+    }
+
+    input,
+    .chooseOptionFromField {
+      border-radius: 0.8rem;
+      border: 0.1rem solid rgb(118, 118, 118);
+      margin: 0;
+      padding-top: 1.6rem;
+      padding-inline-end: 1.2rem;
+      padding-bottom: 1.6rem;
+      padding-inline-start: 1.2rem;
+      font-size: 1.6rem;
+      line-height: 2.4re;
+      background-color: transparent;
+      height: 5.6rem;
+    }
+
+    textarea {
+      overflow: auto;
+      height: 12rem;
+      padding: 0.3rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgb(118, 118, 118);
+      margin: 0;
+      padding-top: 16px;
+      padding-inline-end: 12px;
+      padding-bottom: 16px;
+      padding-inline-start: 12px;
+      font-size: 1.6rem;
+      line-height: 24px;
+      background-color: transparent;
+    }
+
+    input:focus {
+      outline: none !important;
+      border: 1px solid black;
+    }
+
+    &__textarea {
+      overflow: auto;
+      height: 12rem;
+      padding: 0.3rem;
+    }
+
+    .submit-btn {
+      margin: 0.1rem 0.1rem 1rem 0;
+      min-width: 1.5rem;
+      height: 5rem;
+      letter-spacing: 0.5px;
+      line-height: 5rem;
+      padding: 0 2.5rem 0 2.5rem;
+      font-size: 1.5rem;
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        background-color: #393b3c;
+        color: #fff;
+      }
+    }
+
+    .invalid {
+      border: 1px solid red;
+    }
+    .error {
+      color: red;
+    }
+  }
+}

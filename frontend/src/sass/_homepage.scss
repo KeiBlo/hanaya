@@ -1,7 +1,9 @@
+////////////////
+//HOMEPAGE SCREEN
 .home-page {
   &__header {
     height: 80vh;
-    background-image: url('../assets/img/bouquet.jpg');
+    background-image: url("../assets/img/bouquet.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -22,7 +24,7 @@
       &--main {
         font-size: 6rem;
         color: #fff;
-        font-family: 'Dancing Script', cursive;
+        font-family: "Dancing Script", cursive;
         line-height: 6rem;
         font-style: italic;
       }
@@ -105,7 +107,7 @@
 
     &__title {
       text-transform: uppercase;
-      font-family: 'Helvetica', sans-serif;
+      font-family: "Helvetica", sans-serif;
       letter-spacing: 0.2rem;
       padding: 1rem;
     }
@@ -113,7 +115,7 @@
     &__content {
       font-size: 1.4rem;
       padding: 0 1rem;
-      font-family: 'Helvetica', 'Tahoma', sans-serif;
+      font-family: "Helvetica", "Tahoma", sans-serif;
       font-weight: 300;
     }
 
@@ -167,7 +169,7 @@
 
   .line:before,
   .line:after {
-    content: '';
+    content: "";
     flex: 1 1;
     border-bottom: 1px solid #dadada;
     margin: auto;

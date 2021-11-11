@@ -1,13 +1,13 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react"
+import { Link } from "react-router-dom"
 
-const CheckOutSteps = ({step1, step2, step3, step4}) => {
+const CheckOutSteps = ({ step1, step2, step3, step4 }) => {
   return (
-    <ul>
+    <ul className="checkoutSteps">
       <li>
         {step1 ? (
-          <Link to='/login'>
-            <span>Sign In</span>
+          <Link to="/login">
+            <span style={{ color: "black" }}>Sign In</span>
           </Link>
         ) : (
           <span>Sing In</span>
@@ -15,29 +15,29 @@ const CheckOutSteps = ({step1, step2, step3, step4}) => {
       </li>
       <li>
         {step2 ? (
-          <Link to='/shipping'>
-            <span>Shipping</span>
+          <Link to="/shipping">
+            <span style={{ color: "black" }}>Shipping</span>
           </Link>
         ) : (
           <span>Shipping</span>
         )}
-      </li>{' '}
+      </li>{" "}
       <li>
         {step3 ? (
-          <Link to='/payment'>
-            <span>Payment</span>
+          <Link to="/payment">
+            <span style={{ color: "black" }}>Payment</span>
           </Link>
         ) : (
           <span>Payment</span>
         )}
-      </li>{' '}
+      </li>{" "}
       <li>
         {step4 ? (
-          <Link to='/placeorder'>
-            <span>Place Order</span>
+          <Link to="/placeorder">
+            <span style={{ color: "black" }}>Place Order</span>
           </Link>
         ) : (
-          <span>Place Order</span>
+          <span> Place Order</span>
         )}
       </li>
     </ul>

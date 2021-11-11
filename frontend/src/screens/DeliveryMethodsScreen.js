@@ -1,78 +1,78 @@
-import React from 'react'
+import React from "react"
 
 const DeliveryMethodsScreen = () => {
   return (
-    <div className='delivery-methods'>
+    <div className="delivery-methods">
       <h1>Delivery</h1>
 
-      <div className='delivery-methods__wrapper'>
-        <div className='delivery-info'>
+      <div className="delivery-methods__wrapper">
+        <div className="delivery-info">
           <h2>How much are delivery cost?</h2>
           <p>
             Hanaya charges flat shipping rates per ship-to address. The flat
             rates correspond to delivery method. Rates (incl. GST) are as
             follows:
           </p>
-          <table id='faq-tables' style={{ margin: 'auto', width: '70%' }}>
+          <table id="faq-tables" style={{ margin: "auto", width: "70%" }}>
             <tbody>
               <tr>
                 <td
                   style={{
-                    border: '1px solid black',
-                    textAlign: 'left',
-                    verticalAlign: 'middle',
-                    padding: '6px',
+                    border: "1px solid black",
+                    textAlign: "left",
+                    verticalAlign: "middle",
+                    padding: "6px",
                   }}>
                   <strong>Delivery</strong>
                 </td>
                 <td
                   style={{
-                    border: '1px solid black',
-                    textAlign: 'left',
-                    verticalAlign: 'middle',
-                    padding: '6px',
+                    border: "1px solid black",
+                    textAlign: "left",
+                    verticalAlign: "middle",
+                    padding: "6px",
                   }}>
-                  <p className='para-normal'>¥11.00 </p>
+                  <p className="para-normal">¥11.00 </p>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className='delivery-info'>
+        <div className="delivery-info">
           <h2>How long delivery takes?</h2>
           <p>
             Hanaya charges flat shipping rates per ship-to address. The flat
             rates correspond to delivery method. Rates (incl. GST) are as
             follows:
           </p>
-          <table id='faq-tables' style={{ margin: 'auto', width: '70%' }}>
+          <table id="faq-tables" style={{ margin: "auto", width: "70%" }}>
             <tbody>
               <tr>
                 <td
                   style={{
-                    border: '1px solid black',
-                    textAlign: 'left',
-                    verticalAlign: 'middle',
-                    padding: '6px',
+                    border: "1px solid black",
+                    textAlign: "left",
+                    verticalAlign: "middle",
+                    padding: "6px",
                   }}>
                   <strong>Delivery</strong>
                 </td>
                 <td
                   style={{
-                    border: '1px solid black',
-                    textAlign: 'left',
-                    verticalAlign: 'middle',
-                    padding: '6px',
+                    border: "1px solid black",
+                    textAlign: "left",
+                    verticalAlign: "middle",
+                    padding: "6px",
                   }}>
-                  <p className='para-normal'> 15 - 20 business days</p>
+                  <p className="para-normal"> 15 - 20 business days</p>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className='delivery-info'>
+        <div className="delivery-info">
           <h2>Please note:</h2>
-          <ol type='1'>
+          <ol type="1">
             <li>
               Our warehouse is closed on public holidays. For orders placed on,
               or the day before one of these dates, delivery time will be
@@ -87,7 +87,7 @@ const DeliveryMethodsScreen = () => {
               conditional upon a minimum value of products being ordered in a
               single transaction). Our Customer Service team will notify you of
               cancellation and/or such conditions as soon as reasonably
-              practicable after you place your order.{' '}
+              practicable after you place your order.{" "}
             </li>
             <li>
               Please note, that there can be a delay in tracking updates of up

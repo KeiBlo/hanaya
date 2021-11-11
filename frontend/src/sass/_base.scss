@@ -1,6 +1,7 @@
-@import '_mixins.scss';
+@import "_mixins.scss";
 
-// COLOR VARIABLES
+///////////////////
+//COLOR VARIABLES
 $font-color-primary: #393b3c;
 $color-secondary: #101d2c;
 
@@ -16,9 +17,11 @@ $light-color: #f4f4f4;
 $danger-color: #dc3545;
 $success-color: #28a745;
 
-// FONT VARIABLES
-$font-primary: 'Montserrat', sans-serif;
+/////////////////
+//FONT VARIABLES
+$font-primary: "Montserrat", sans-serif;
 
+////////////////
 //BASIC SETUP
 * {
   margin: 0;
@@ -49,15 +52,22 @@ html {
   }
 }
 
-.container {
+.main-container {
   font-family: $font-primary;
   color: $font-color-primary;
   font-weight: 300;
   line-height: 1.6;
   background-color: #ffffff;
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: 15rem 1fr 31rem;
+  min-height: 80vh;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.125;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ul {
@@ -72,7 +82,7 @@ a {
 .custom-btn {
   margin: 0.1rem;
   min-width: 1.5rem;
-  width: auto;
+  width: 30%;
   height: 5rem;
   letter-spacing: 0.5px;
   line-height: 5rem;
@@ -80,7 +90,7 @@ a {
   font-size: 1.5rem;
   background-color: black;
   color: white;
-  font-family: 'Open Sans Condensed';
+  font-family: "Open Sans Condensed";
   font-weight: bolder;
   border: none;
   cursor: pointer;
