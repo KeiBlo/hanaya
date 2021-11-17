@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 const ImgGallery = ({ product }) => {
   const [currentImg, setCurrentImg] = useState(product.image)
@@ -10,26 +10,26 @@ const ImgGallery = ({ product }) => {
   }
 
   return (
-    <div className='img-gallery'>
-      <div className='img-gallery__main'>
+    <div className="img-gallery">
+      <div className="img-gallery__main">
         <img
           src={currentImg}
           alt={currentName}
-          className='img-gallery__main--img-lg'
+          className="img-gallery__main--img-lg"
         />
       </div>
 
-      <div className='img-gallery__secondary'>
+      <div className="img-gallery__secondary">
         {product.additionalImg !== undefined
           ? product.additionalImg.map((srcLink) => {
               return (
                 <div
-                  key={product.id}
-                  className='img-gallery__secondary--wrapper'>
+                  key={product._id}
+                  className="img-gallery__secondary--wrapper">
                   <img
                     src={srcLink}
                     alt={product.name}
-                    className='img-gallery__secondary--img-sm'
+                    className="img-gallery__secondary--img-sm"
                     onClick={handleOnClick}
                   />
                 </div>

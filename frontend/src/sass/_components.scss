@@ -131,104 +131,6 @@
 }
 
 ////////////////
-//CART DROPDOWN
-.cart-dropdown {
-  position: absolute;
-  width: 24rem;
-  height: 34rem;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  border: 1px solid black;
-  background-color: white;
-  top: 9rem;
-  right: 4rem;
-  z-index: 5;
-
-  .empty-message {
-    font-size: 1.8rem;
-    margin: 5rem auto;
-  }
-
-  .cart-items {
-    height: 24rem;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    align-items: center;
-  }
-
-  button {
-    margin-top: auto;
-  }
-}
-
-/////////////////////////
-//PRODUCT-DETAILS SCREEN
-
-.product-details {
-  display: flex;
-  justify-content: space-evenly;
-  @include respond(phone) {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.details {
-  &__content-box {
-    width: 50rem;
-  }
-
-  &__nav {
-    padding-bottom: 2rem;
-    @include respond(phone) {
-      padding-top: 2rem;
-    }
-  }
-
-  &__nav-list {
-    display: flex;
-    border-bottom: 1px solid black;
-  }
-
-  &__nav-item {
-    margin-left: 1rem;
-    list-style: none;
-  }
-  &__nav-link {
-    text-decoration: none;
-  }
-  &__nav-link:hover {
-    color: #000000;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  &__price {
-    font-weight: 700;
-    color: #000;
-    font-size: 1.6rem;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__description {
-    margin: 1rem;
-  }
-  .is-active {
-    color: #000000;
-    font-weight: 700;
-  }
-
-  &-list__item {
-    padding: 0.5rem 0;
-  }
-}
-////////////////
 //CART-ITEM
 .cart-item {
   width: 100%;
@@ -258,11 +160,11 @@
 //ALERT
 
 .alert {
-  margin: 0 0 0.5rem 0;
+  margin: 1rem;
   opacity: 0.9;
   background: #fff;
   color: #000;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .alert-primary {
@@ -358,5 +260,52 @@
   span {
     font-size: 1.4rem;
     color: rgb(118, 118, 118);
+  }
+}
+
+/////////////
+////DROP DOWN
+.dropdown {
+  position: absolute;
+  top: 5rem;
+  right: 22rem;
+  width: 10rem;
+  transform: translateX(-45%);
+  border: 0.1rem solid black;
+  background-color: #fff;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  overflow: hidden;
+  transition: height 500ms ease;
+
+  .dropdown-nav-wrapper {
+    height: 6rem;
+
+    .dropdown-nav {
+      max-width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.1rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        line-height: 1.8rem;
+
+        :hover {
+          color: #fc5185;
+        }
+      }
+
+      button {
+        margin-top: auto;
+      }
+    }
   }
 }

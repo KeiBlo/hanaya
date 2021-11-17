@@ -54,88 +54,94 @@ const ProfileScreen = ({ location, history }) => {
   }
   return (
     <div className="profile-page">
-      <div className="form__wrapper">
-        <h2 className="form__wrapper__title">User Profile</h2>
-        {message && <Alert>{message}</Alert>}
-        {error && <Alert>{error}</Alert>}
-        {success && <Alert>{success}</Alert>}
-        {loading && <Spinner />}
-        <span> Edit your user details</span>
-        <form className="form" onSubmit={submitHandler}>
-          <label>Name</label>
-          <input
-            type="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}></input>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}></input>
+      <h2 className="profile-page__title">User Profile</h2>
+      <div className="profile-page__wrapper">
+        <div className="form__wrapper">
+          {message && <Alert>{message}</Alert>}
+          {error && <Alert>{error}</Alert>}
+          {success && <Alert>{success}</Alert>}
+          {loading && <Spinner />}
+          <span> Edit your user details</span>
+          <form className="form" onSubmit={submitHandler}>
+            <label>Name</label>
+            <input
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}></input>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}></input>
 
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}></input>
-          <label>Confirm password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}></input>
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}></input>
+            <label>Confirm password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}></input>
 
-          <button className="submit-btn" type="submit">
-            Update
-          </button>
-        </form>
-      </div>
-      <div className="profile-page__orders-data">
-        <h2 className="profile-page__orders-data__title">My Orders</h2>
-        {loadingOrders ? (
-          <Spinner />
-        ) : errorOrders ? (
-          <Alert>{errorOrders}</Alert>
-        ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>TOTAL</th>
-                <th>PADI</th>
-                <th>DELIVERED</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
-                    )}
-                  </td>
-                  <td>
-                    <Link to={`/order/${order._id}`}>
-                      <button>Details</button>
-                    </Link>
-                  </td>
+            <button className="submit-btn" type="submit">
+              Update
+            </button>
+          </form>
+        </div>
+        <div className="orders-data">
+          <h2 className="orders-data__title">My Orders</h2>
+          {loadingOrders ? (
+            <Spinner />
+          ) : errorOrders ? (
+            <Alert>{errorOrders}</Alert>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>TOTAL</th>
+                  <th>PADI</th>
+                  <th>DELIVERED</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{ color: "red" }}></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className="fas fa-times"
+                          style={{ color: "red" }}></i>
+                      )}
+                    </td>
+                    <td>
+                      <Link to={`/order/${order._id}`}>
+                        <button>Details</button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
     </div>
   )

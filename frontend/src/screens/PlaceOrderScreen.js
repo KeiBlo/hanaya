@@ -55,69 +55,65 @@ const PlaceOrderScreen = ({ history }) => {
     <div className="place-order-screen">
       <CheckOutSteps step1 step2 step3 step4 />
       <div className="place-order-screen__wrapper">
-        <div>
-          <h2>Shipping</h2>
+        <div className="shipping-summary">
+          <h2 className="shipping-summary__title">Shipping</h2>
           <ul>
             <li>
+              <h3>Address:</h3>
               <p>
-                <strong>Address:</strong>
-                {cart.shippingAddress.address},{" "}
-                {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.phoneNumber}
+                {cart.shippingAddress.address},{cart.shippingAddress.postalCode}
+                ,{cart.shippingAddress.phoneNumber}
               </p>
             </li>
 
             <li>
-              <h2>Payment Method</h2>
-              <p>
-                <strong>Method:</strong>
-                {cart.paymentMethod}
-              </p>
+              <h3>Payment Method:</h3>
+              <p>{cart.paymentMethod}</p>
             </li>
 
             <li>
-              <h2>Order Items</h2>
-              {cart.cartItems.length === 0 ? (
-                <p>Your cart is empty</p>
-              ) : (
-                <ul>
-                  {cart.cartItems.map((item, index) => (
-                    <li key={index}>
-                      <image src={item.image} alt={item.name} />
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
-                      <p>
-                        {item.qty}*{item.price} = ¥{item.qty * item.price}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <h3>Order Items</h3>
+              <div className="order-items">
+                {cart.cartItems.length === 0 ? (
+                  <Alert alertType="primary"> Your cart is empty</Alert>
+                ) : (
+                  <ul>
+                    {cart.cartItems.map((item, index) => (
+                      <li key={index}>
+                        <image src={item.image} alt={item.name} />
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                        <p>
+                          {item.qty}*{item.price} = ¥{item.qty * item.price}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </li>
           </ul>
         </div>
 
-        <div>
+        <div className="order-summary">
+          <h2 className="order-summary__title">Order Summary</h2>
           <ul>
             <li>
-              <h2>Order Summary</h2>
-            </li>
-            <li>
-              <h2>Items</h2>
+              <h3>Items</h3>
               <p>¥{cart.itemsPrice}</p>
             </li>
             <li>
-              <h2>Shipping</h2>
+              <h3>Shipping</h3>
               <p>¥{cart.shippingPrice}</p>
             </li>
             <li>
-              <h2>Tax</h2>
+              <h3>Tax</h3>
               <p>¥{cart.taxPrice}</p>
             </li>
             <li>
-              <h2>Total</h2>
+              <h3>Total</h3>
               <p>¥{cart.totalPrice}</p>
             </li>
-            <li>{error && <Alert>{error}</Alert>}</li>
+            <li>{error && <Alert alertType="danger">{error}</Alert>}</li>
           </ul>
         </div>
       </div>
