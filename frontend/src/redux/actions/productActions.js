@@ -28,13 +28,13 @@ import {
 import { logout } from "./userActions"
 
 export const listProducts =
-  (categoryName, pageNumber = "") =>
+  (categoryName = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST })
 
       const { data } = await axios.get(
-        `/api/products${categoryName}?pageNumber=${pageNumber}`
+        `/api/products/${categoryName}&pageNumber=${pageNumber}`
       )
 
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
@@ -49,32 +49,14 @@ export const listProducts =
     }
   }
 
-export const adminListProducts = () => async (dispatch) => {
-  try {
-    dispatch({ type: PRODUCT_LIST_REQUEST })
-
-    const { data } = await axios.get(`/api/products`)
-
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
-  }
-}
-
 export const searchProducts =
-  (keyword = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_SEARCH_REQUEST })
 
       const { data } = await axios.get(
-        `/api/products/search?keyword=${keyword}`
+        `/api/products/search?keyword=${keyword}&pageNumber=${pageNumber}`
       )
 
       dispatch({ type: PRODUCT_SEARCH_SUCCESS, payload: data })

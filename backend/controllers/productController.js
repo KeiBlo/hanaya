@@ -8,17 +8,16 @@ const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 8
   const page = Number(req.query.pageNumber) || 1
 
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: "i",
-        },
-      }
-    : {}
+  const categoryName = req.path
+    .replace(/\//g, "")
+    .replace("category", "")
+    .split("&")[0]
 
-  const count = await Product.countDocuments({ ...keyword })
-  const products = await Product.find({ ...keyword })
+  const count = await Product.count({ category: categoryName })
+  console.log(count)
+  console.log(categoryName)
+
+  const products = await Product.find({ category: categoryName })
     .limit(pageSize)
     .skip(pageSize + (page - 1))
 
@@ -29,12 +28,32 @@ const getProducts = asyncHandler(async (req, res) => {
   }
 })
 
-const getProductsByCategory = asyncHandler(async (req, res) => {
-  const categoryName = req.path.replace(/\//g, "").replace("category", "")
+//@desc Search products by keyword
+//@route GET /api/products/search
+//@access Public
+const searchProducts = asyncHandler(async (req, res) => {
+  const pageSize = 8
+  const page = Number(req.query.pageNumber) || 1
 
-  const products = await Product.find({ category: categoryName })
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {}
 
-  res.json(products)
+  const count = await Product.count({ ...keyword })
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize + (page - 1))
+
+  if (products.length > 0) {
+    res.json({ products, page, pages: Math.ceil(count / pageSize) })
+  } else {
+    res.status(404).json({ message: "Product not found" })
+  }
 })
 
 //@desc Fetch single product
@@ -158,7 +177,7 @@ export {
   getProducts,
   getProductById,
   getTopProducts,
-  getProductsByCategory,
+  searchProducts,
   deleteProduct,
   createProduct,
   updateProduct,

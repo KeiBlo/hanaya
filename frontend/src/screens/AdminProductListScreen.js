@@ -5,7 +5,7 @@ import Alert from "../components/alert"
 import Spinner from "../components/spinner"
 import Pagination from "../components/pagination"
 import {
-  adminListProducts,
+  listProducts,
   deleteProduct,
   createProduct,
 } from "../redux/actions/productActions"
@@ -45,7 +45,7 @@ const AdminProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(adminListProducts("", pageNumber))
+      dispatch(listProducts("", pageNumber))
     }
   }, [
     dispatch,
@@ -54,6 +54,7 @@ const AdminProductListScreen = ({ history, match }) => {
     successDelete,
     successCreate,
     createdProduct,
+    pageNumber,
   ])
 
   const deleteHandler = (id) => {
