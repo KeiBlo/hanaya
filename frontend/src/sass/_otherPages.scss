@@ -104,11 +104,16 @@
 
 ////////////////
 //PRODUCTS SCREEN
-.product-page--wrapper {
+
+.product-page {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 3rem;
+  flex-direction: column;
+  &--wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 3rem;
+  }
 }
 
 ////////////////

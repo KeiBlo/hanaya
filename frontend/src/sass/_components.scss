@@ -285,3 +285,21 @@
     }
   }
 }
+
+////////////////
+////PAGINATION
+.pagination {
+  margin: 1rem auto;
+
+  &__list {
+    display: flex;
+
+    &--item {
+      background-color: black;
+      padding: 0.1rem 0.4rem;
+      margin: 0 0.1rem;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+  }
+}

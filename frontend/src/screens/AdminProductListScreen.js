@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useEffect } from "react"
+import React, { Fragment, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import Alert from "../components/alert"
 import Spinner from "../components/spinner"
+import Pagination from "../components/pagination"
 import {
   adminListProducts,
   deleteProduct,
@@ -12,10 +13,11 @@ import {
 import { PRODUCT_CREATE_RESET } from "../redux/constants/productConstants"
 
 const AdminProductListScreen = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
-  const { loaidng, error, products } = productList
+  const { loaidng, error, products, page, pages } = productList
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
@@ -43,7 +45,7 @@ const AdminProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(adminListProducts())
+      dispatch(adminListProducts("", pageNumber))
     }
   }, [
     dispatch,
@@ -123,6 +125,7 @@ const AdminProductListScreen = ({ history, match }) => {
           </tbody>
         </table>
       )}
+      <Pagination pages={pages} page={page} isAdmin={true} />
     </Fragment>
   )
 }

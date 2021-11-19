@@ -233,7 +233,7 @@ const ProductDetailsScreen = ({ match }) => {
                     <label>Comment</label>
                     <input
                       type="textarea"
-                      controlId="comment"
+                      controlid="comment"
                       row="3"
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}></input>

@@ -25,7 +25,7 @@ import AboutUsScreen from "./screens/AboutUsScreen"
 import FaqScreen from "./screens/FaqScreen"
 import DeliveryMethodsScreen from "./screens/DeliveryMethodsScreen"
 
-import MobileNavigation from "./components/mobile-nav"
+import MobileNavigation from "./components/navbar"
 
 const App = () => {
   return (
@@ -56,9 +56,15 @@ const App = () => {
         <Route path="/admin/userlist" component={UserListScreen} />
         <Route path="/admin/user/:id/edit" component={UserEditScreen} />
         <Route path="/admin/productlist" component={AdminProductListScreen} />
+        <Route
+          path="/admin/productlist/:pageNumber"
+          component={AdminProductListScreen}
+          exact
+        />
         <Route path="/admin/orderlist" component={OrderListScreen} />
         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
-        <Route path="/search/:keyword" component={SearchResultScreen} />
+        <Route path="/search/:keyword" component={SearchResultScreen} exact />
+        <Route path="/page/:pageNumber" component={ProductsListScreen} exact />
         <Route path="/" component={HomeScreen} exact />
       </div>
       <Footer />

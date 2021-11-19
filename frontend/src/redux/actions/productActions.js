@@ -246,7 +246,7 @@ export const createProductReview =
 
       const {
         userLogin: { userInfo },
-      } = getState
+      } = getState()
 
       const config = {
         headers: {
@@ -254,23 +254,23 @@ export const createProductReview =
           Authorization: `Bearer ${userInfo.token}`,
         },
       }
-      await axios.post(
-        `/api/products/${productId}/reviews`,
-        review,
 
-        config
-      )
+      await axios.post(`/api/products/${productId}/reviews`, review, config)
 
       dispatch({
         type: PRODUCT_CREATE_REVIEW_SUCCESS,
       })
     } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === "Not authorized, token failed") {
+        dispatch(logout())
+      }
       dispatch({
         type: PRODUCT_CREATE_REVIEW_FAIL,
-        payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
-            : error.message,
+        payload: message,
       })
     }
   }
