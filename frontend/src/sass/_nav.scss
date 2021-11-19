@@ -112,9 +112,6 @@
     @include respond(tab-port) {
       grid-column: 1/8;
     }
-    .navigation___link--active {
-      color: #fc5185;
-    }
   }
 
   .navigation__list {
@@ -153,4 +150,33 @@
 .is-active {
   color: #fc5185;
   cursor: pointer;
+}
+
+////////////////
+//MOBILE NAVIGATION
+
+.mobile-nav {
+  &__list {
+    padding: 3rem 0;
+    display: flex;
+
+    flex-wrap: nowrap;
+    width: 50rem;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: $color-secondary;
+
+    &__item {
+      padding: 0.8rem 0.5rem;
+      &--link {
+        color: white;
+        font-size: 2.4rem;
+        font-weight: 500;
+        line-height: 1.166667;
+      }
+    }
+  }
 }

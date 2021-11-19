@@ -33,9 +33,9 @@ const Navbar = ({ hidden }) => {
       </div>
 
       <div className="navbar__logo-box">
-        <Link to="/" className="navbar__logo">
+        <NavLink to="/" className="navbar__logo">
           <h2 className="navbar__logo--h2">HANAYA GARDEN</h2>
-        </Link>
+        </NavLink>
         <span className="navbar__logo-span">Tokyo</span>
       </div>
       <div className="navbar__user-account">
@@ -49,25 +49,31 @@ const Navbar = ({ hidden }) => {
                   </li>
                 )}
                 <li>{showDropDown ? <Dropdown /> : null}</li>
+
                 <li className="navigation__item">
-                  <Link to="/profile">
+                  <NavLink to="/profile" activeClassName="is-active">
                     <UserIcon className="navbar__icon" /> Profile
-                  </Link>
+                  </NavLink>
                 </li>
 
                 <li className="navigation__item">
-                  <Link to="/cart">
+                  <NavLink activeClassName="is-active" to="/cart">
                     <CartIcon className="navbar__icon" /> Cart
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="navigation__item" onClick={logoutHandler}>
-                  <Link to="/">Logout</Link>
+                  <NavLink activeClassName="is-active" to="/">
+                    Logout
+                  </NavLink>
                 </li>
               </ul>
             ) : (
-              <Link className="navigation__item" to="/login">
-                <UserIcon className="navbar__icon" /> SING IN
-              </Link>
+              <NavLink
+                activeClassName="is-active"
+                className="navigation__item"
+                to="/login">
+                <UserIcon className="navbar__icon" /> Sign In
+              </NavLink>
             )}
           </li>
         </ul>
@@ -75,11 +81,7 @@ const Navbar = ({ hidden }) => {
       <div className="navbar__navigation">
         <ul className="navigation__list">
           <li className="navigation__item">
-            <NavLink
-              to="/category/birthday"
-              activeClassName="is-active"
-              exact={true}>
-              {" "}
+            <NavLink to="/category/birthday" activeClassName="is-active">
               Birthday
             </NavLink>
           </li>

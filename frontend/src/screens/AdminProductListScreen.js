@@ -1,21 +1,21 @@
-import React, {Fragment, useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import Alert from '../components/alert'
-import Spinner from '../components/spinner'
+import React, { Fragment, useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import Alert from "../components/alert"
+import Spinner from "../components/spinner"
 import {
-  listProducts,
+  adminListProducts,
   deleteProduct,
   createProduct,
-} from '../redux/actions/productActions'
+} from "../redux/actions/productActions"
 
-import {PRODUCT_CREATE_RESET} from '../redux/constants/productConstants'
+import { PRODUCT_CREATE_RESET } from "../redux/constants/productConstants"
 
-const AdminProductListScreen = ({history, match}) => {
+const AdminProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
-  const {loaidng, error, products} = productList
+  const { loaidng, error, products } = productList
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
@@ -33,17 +33,17 @@ const AdminProductListScreen = ({history, match}) => {
   } = productCreate
 
   const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo} = userLogin
+  const { userInfo } = userLogin
 
   useEffect(() => {
-    dispatch({type: PRODUCT_CREATE_RESET})
+    dispatch({ type: PRODUCT_CREATE_RESET })
     if (!userInfo.isAdmin) {
-      history.push('/login')
+      history.push("/login")
     }
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts())
+      dispatch(adminListProducts())
     }
   }, [
     dispatch,
@@ -55,7 +55,7 @@ const AdminProductListScreen = ({history, match}) => {
   ])
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you  sure')) {
+    if (window.confirm("Are you  sure")) {
       dispatch(deleteProduct(id))
     }
   }
@@ -69,12 +69,15 @@ const AdminProductListScreen = ({history, match}) => {
       <div>
         <ul>
           <li>
-            {' '}
+            {" "}
             <h1>Products</h1>
           </li>
           <li>
-            <button type='button' onClick={createProductHandler}>
-              <i className='fas fa-plust'></i>
+            <button
+              type="button"
+              className="custom-btn"
+              onClick={createProductHandler}>
+              <i className="fas fa-plust"></i>+Create new product
             </button>
           </li>
         </ul>
@@ -96,7 +99,7 @@ const AdminProductListScreen = ({history, match}) => {
               <th>NAME</th>
               <th>PRICE</th>
               <th>CATEGORY</th>
-              <th>BRAND</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -109,11 +112,11 @@ const AdminProductListScreen = ({history, match}) => {
 
                 <Link to={`/admin/user/product/${product._id}/edit`}>
                   <button>
-                    <i className='fas fa-edit'></i>
+                    <i className="fas fa-edit"></i>
                   </button>
                 </Link>
                 <button onClick={() => deleteHandler(product._id)}>
-                  <i className='fas fa-trash'></i>
+                  <i className="fas fa-trash"></i>
                 </button>
               </tr>
             ))}

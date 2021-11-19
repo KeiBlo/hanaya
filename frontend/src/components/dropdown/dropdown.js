@@ -10,7 +10,7 @@ const Dropdown = () => {
             <Link to="/admin/userlist">Users</Link>
           </li>
           <li className="dropdown-nav__item">
-            <Link to="/admin/products">Products</Link>
+            <Link to="/admin/productlist">Products</Link>
           </li>
           <li className="dropdown-nav__item">
             <Link to="/admin/orderList">Orders</Link>

@@ -1,28 +1,4 @@
 ////////////////
-//BURGER-MENU
-
-.burger-menu {
-  width: 2rem;
-  height: 2rem;
-  position: fixed;
-  top: 1.5rem;
-  right: 2rem;
-  display: flex;
-  justify-content: space-around;
-  flex-flow: column nowrap;
-  display: none;
-  @include respond(tab-port) {
-    display: block;
-  }
-  &__item {
-    width: 2rem;
-    height: 0.25rem;
-    background-color: #333;
-    border-radius: 1rem;
-  }
-}
-
-////////////////
 //IMAGE GALLERY
 .img-gallery {
   max-width: 40rem;

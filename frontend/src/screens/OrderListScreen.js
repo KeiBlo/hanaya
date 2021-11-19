@@ -1,24 +1,24 @@
-import React, {Fragment, useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import Alert from '../components/alert'
-import Spinner from '../components/spinner'
-import {listOrders} from '../redux/actions/orderActions'
+import React, { Fragment, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import Alert from "../components/alert"
+import Spinner from "../components/spinner"
+import { listOrders } from "../redux/actions/orderActions"
 
-const OrderListScreen = ({history}) => {
+const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch()
 
   const orderList = useSelector((state) => state.orderList)
-  const {loaidng, error, orders} = orderList
+  const { loaidng, error, orders } = orderList
 
   const userLogin = useSelector((state) => state.userLogin)
-  const {userInfo} = userLogin
+  const { userInfo } = userLogin
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOrders())
     } else {
-      history.push('/login')
+      history.push("/login")
     }
   }, [dispatch, history, userInfo])
 
@@ -52,19 +52,22 @@ const OrderListScreen = ({history}) => {
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
                   ) : (
-                    <i className='fas fa-times' style={{color: 'red'}}></i>
+                    <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
                     order.deliveredAt.substring(0, 10)
                   ) : (
-                    <i className='fas fa-times' style={{color: 'red'}}></i>
+                    <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
                 </td>
                 <td>
-                  <Link to={`/order/${order._id}`}>
-                    <button>Details</button>
+                  <Link to={`/admin/order/${order._id}`}>
+                    <button type="button" className="custom-btn">
+                      {" "}
+                      Details
+                    </button>
                   </Link>
                 </td>
               </tr>

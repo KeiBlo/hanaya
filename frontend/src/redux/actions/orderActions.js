@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios"
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -18,7 +18,9 @@ import {
   ORDER_DELIVER_REQUEST,
   ORDER_DELIVER_SUCCESS,
   ORDER_DELIVER_FAIL,
-} from '../constants/orderConstants'
+} from "../constants/orderConstants"
+
+import { logout } from "./userActions"
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -27,16 +29,16 @@ export const createOrder = (order) => async (dispatch, getState) => {
     })
 
     const {
-      userLogin: {userInfo},
+      userLogin: { userInfo },
     } = getState
 
     const config = {
       headers: {
-        'Contetn-Type': 'application/json',
+        "Contetn-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const {data} = await axios.post(`/api/orders`, order, config)
+    const { data } = await axios.post(`/api/orders`, order, config)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -60,16 +62,16 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     })
 
     const {
-      userLogin: {userInfo},
+      userLogin: { userInfo },
     } = getState
 
     const config = {
       headers: {
-        'Contetn-Type': 'application/json',
+        "Contetn-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const {data} = await axios.get(`/api/orders/${id}`, config)
+    const { data } = await axios.get(`/api/orders/${id}`, config)
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -94,16 +96,16 @@ export const payOrder =
       })
 
       const {
-        userLogin: {userInfo},
+        userLogin: { userInfo },
       } = getState
 
       const config = {
         headers: {
-          'Contetn-Type': 'application/json',
+          "Contetn-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
         },
       }
-      const {data} = await axios.put(
+      const { data } = await axios.put(
         `/api/orders/${orderId}/pay`,
         paymentResult,
         config
@@ -131,7 +133,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
     })
 
     const {
-      userLogin: {userInfo},
+      userLogin: { userInfo },
     } = getState
 
     const config = {
@@ -139,8 +141,8 @@ export const listMyOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const {data} = await axios.get(
-      '/api/orders/myorders',
+    const { data } = await axios.get(
+      "/api/orders/myorders",
 
       config
     )
@@ -167,31 +169,32 @@ export const listOrders = () => async (dispatch, getState) => {
     })
 
     const {
-      userLogin: {userInfo},
-    } = getState
+      userLogin: { userInfo },
+    } = getState()
 
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const {data} = await axios.get(
-      '/api/orders',
 
-      config
-    )
+    const { data } = await axios.get(`/api/orders`, config)
 
     dispatch({
       type: ORDER_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === "Not authorized, token failed") {
+      dispatch(logout())
+    }
     dispatch({
       type: ORDER_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     })
   }
 }
@@ -203,16 +206,16 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     })
 
     const {
-      userLogin: {userInfo},
-    } = getState
+      userLogin: { userInfo },
+    } = getState()
 
     const config = {
       headers: {
-        'Contetn-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const {data} = await axios.put(
+
+    const { data } = await axios.put(
       `/api/orders/${order._id}/deliver`,
       {},
       config
@@ -223,12 +226,16 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       payload: data,
     })
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === "Not authorized, token failed") {
+      dispatch(logout())
+    }
     dispatch({
       type: ORDER_DELIVER_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     })
   }
 }

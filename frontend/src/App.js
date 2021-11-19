@@ -25,10 +25,12 @@ import AboutUsScreen from "./screens/AboutUsScreen"
 import FaqScreen from "./screens/FaqScreen"
 import DeliveryMethodsScreen from "./screens/DeliveryMethodsScreen"
 
+import MobileNavigation from "./components/mobile-nav"
+
 const App = () => {
   return (
     <Router>
-      <Navbar />
+      <MobileNavigation />
       <div className="main-container">
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="/shipping" component={ShippingScreen} />
