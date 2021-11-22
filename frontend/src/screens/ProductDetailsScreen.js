@@ -94,6 +94,7 @@ const ProductDetailsScreen = ({ match }) => {
 
   return (
     <div className="product-details">
+      <Meta title={product.name} />
       <div className="product-details__left">
         <ImgGallery product={product} />
       </div>
