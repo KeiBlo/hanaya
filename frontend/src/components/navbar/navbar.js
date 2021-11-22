@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom"
 import { logout } from "../../redux/actions/userActions"
 import SearchBox from "../search-box"
 import Dropdown from "../dropdown"
-import Sidebar from "../mobile-nav"
+import Sidebar from "../sidebar"
 
 import { ReactComponent as BurgerMenu } from "../../assets/svg/menu.svg"
 import { ReactComponent as CartIcon } from "../../assets/svg/cart.svg"
@@ -24,16 +24,16 @@ const Navbar = ({ hidden }) => {
     dispatch(logout())
   }
 
-  const toggleAdminMenu = (e) => {
+  const toggleAdminMenu = () => {
     setAdminMenu(!adminMenu)
   }
 
-  const showSidebar = () => {
+  const toggleSidebar = () => {
     setSidebar(!sidebar)
   }
   return (
     <Fragment>
-      <Sidebar showSidebar={showSidebar} sidebar={sidebar} />
+      <Sidebar toggleSidebar={toggleSidebar} sidebar={sidebar} />
 
       <div className="navbar">
         <div className="navbar__search">
@@ -54,15 +54,12 @@ const Navbar = ({ hidden }) => {
                   {userInfo && userInfo.isAdmin && (
                     <Fragment>
                       <li className="navigation__item">
-                        <AdminIcon className="navbar__icon" />
-                        <Link
-                          activeClassName="is-active"
-                          to="#"
-                          onClick={toggleAdminMenu}>
-                          Admin
-                        </Link>
+                        <div className="admin-menu" o>
+                          <AdminIcon className="navbar__icon" />
+                          <span onClick={toggleAdminMenu}> Admin</span>
+                        </div>
+                        {adminMenu ? <Dropdown /> : null}
                       </li>
-                      <li> {adminMenu ? <Dropdown /> : null}</li>
                     </Fragment>
                   )}
 
@@ -130,7 +127,7 @@ const Navbar = ({ hidden }) => {
           {" "}
           <BurgerMenu
             className="burger-menu__icon"
-            onClick={(e) => showSidebar(e)}
+            onClick={(e) => toggleSidebar(e)}
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom"
 import { logout } from "../../redux/actions/userActions"
 import { ReactComponent as CloseIcon } from "../../assets/svg/cross.svg"
 
-const Sidebar = ({ showSidebar, sidebar }) => {
+const Sidebar = ({ toggleSidebar, sidebar }) => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -17,7 +17,10 @@ const Sidebar = ({ showSidebar, sidebar }) => {
   return (
     <div className={sidebar ? "mobile-nav active" : "mobile-nav"}>
       <div className="close-btn-wrapper">
-        <CloseIcon className="close-btn-wrapper__icon" onClick={showSidebar} />
+        <CloseIcon
+          className="close-btn-wrapper__icon"
+          onClick={toggleSidebar}
+        />
       </div>
       <ul className="mobile-nav__list">
         <li className="mobile-nav__list__item">
