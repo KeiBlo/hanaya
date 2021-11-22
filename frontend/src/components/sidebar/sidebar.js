@@ -15,42 +15,46 @@ const Sidebar = ({ toggleSidebar, sidebar }) => {
   }
 
   return (
-    <div className={sidebar ? "mobile-nav active" : "mobile-nav"}>
+    <div className={sidebar ? "sidebar-nav active" : "sidebar-nav"}>
       <div className="close-btn-wrapper">
         <CloseIcon
           className="close-btn-wrapper__icon"
           onClick={toggleSidebar}
         />
       </div>
-      <ul className="mobile-nav__list">
-        <li className="mobile-nav__list__item">
+      <ul className="sidebar-nav__list">
+        <li className="sidebar-nav__list__item">
           <Link
-            className="mobile-nav__list__item--link"
+            className="sidebar-nav__list__item--link"
             to="/category/birthday">
             Birthday
           </Link>
         </li>
-        <li className="mobile-nav__list__item">
-          <Link to="/category/newbaby" className="mobile-nav__list__item--link">
+        <li className="sidebar-nav__list__item">
+          <Link
+            to="/category/newbaby"
+            className="sidebar-nav__list__item--link">
             New Baby
           </Link>
         </li>
-        <li className="mobile-nav__list__item">
-          <Link to="/category/romance" className="mobile-nav__list__item--link">
+        <li className="sidebar-nav__list__item">
+          <Link
+            to="/category/romance"
+            className="sidebar-nav__list__item--link">
             Romance
           </Link>
         </li>
-        <li className="mobile-nav__list__item">
+        <li className="sidebar-nav__list__item">
           <Link
             to="/category/anniversary"
-            className="mobile-nav__list__item--link">
+            className="sidebar-nav__list__item--link">
             Anniversary
           </Link>
         </li>
-        <li className="mobile-nav__list__item">
+        <li className="sidebar-nav__list__item">
           <Link
             to="/category/congradulations"
-            className="mobile-nav__list__item--link">
+            className="sidebar-nav__list__item--link">
             Congradulations
           </Link>
         </li>
@@ -58,42 +62,42 @@ const Sidebar = ({ toggleSidebar, sidebar }) => {
           <Fragment>
             {userInfo && userInfo.isAdmin && (
               <Fragment>
-                <li className="mobile-nav__list__item">
+                <li className="sidebar-nav__list__item">
                   <Link
-                    className="mobile-nav__list__item--link"
+                    className="sidebar-nav__list__item--link"
                     to="/admin/userlist">
                     Users
                   </Link>
                 </li>
-                <li className="mobile-nav__list__item">
+                <li className="sidebar-nav__list__item">
                   <Link
-                    className="mobile-nav__list__item--link"
+                    className="sidebar-nav__list__item--link"
                     to="/admin/productlist">
                     Products
                   </Link>
                 </li>
-                <li className="mobile-nav__list__item">
+                <li className="sidebar-nav__list__item">
                   <Link
-                    className="mobile-nav__list__item--link"
+                    className="sidebar-nav__list__item--link"
                     to="/admin/orderList">
                     Orders
                   </Link>
                 </li>
               </Fragment>
             )}
-            <li className="mobile-nav__list__item">
-              <Link to="/profile" className="mobile-nav__list__item--link">
+            <li className="sidebar-nav__list__item">
+              <Link to="/profile" className="sidebar-nav__list__item--link">
                 Profile
               </Link>
             </li>
 
-            <li className="mobile-nav__list__item">
-              <Link to="/cart" className="mobile-nav__list__item--link">
+            <li className="sidebar-nav__list__item">
+              <Link to="/cart" className="sidebar-nav__list__item--link">
                 Cart
               </Link>
             </li>
-            <li onClick={logoutHandler} className="mobile-nav__list__item">
-              <Link to="/" className="mobile-nav__list__item--link">
+            <li onClick={logoutHandler} className="sidebar-nav__list__item">
+              <Link to="/" className="sidebar-nav__list__item--link">
                 Logout
               </Link>
             </li>

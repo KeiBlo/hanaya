@@ -157,9 +157,9 @@
 }
 
 ////////////////
-//MOBILE NAVIGATION
+//SIDEBAR NAVIGATION
 
-.mobile-nav {
+.sidebar-nav {
   padding: 0 0 3rem 0;
   display: flex;
   flex-wrap: nowrap;
@@ -173,7 +173,7 @@
   top: 0;
   right: -100%;
   transition: 850ms;
-  background-color: $color-secondary;
+  background-color: #393b3c;
   z-index: 1;
   &__list {
     padding: 3rem 0;
@@ -210,7 +210,7 @@
   }
 }
 
-.mobile-nav.active {
+.sidebar-nav.active {
   right: 0;
   transition: 350ms;
 }
