@@ -1,16 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, Fragment } from "react"
 import { Route } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
 import { logout } from "../../redux/actions/userActions"
 import SearchBox from "../search-box"
 import Dropdown from "../dropdown"
+import Sidebar from "../mobile-nav"
 
+import { ReactComponent as BurgerMenu } from "../../assets/svg/menu.svg"
 import { ReactComponent as CartIcon } from "../../assets/svg/cart.svg"
 import { ReactComponent as UserIcon } from "../../assets/svg/user.svg"
 import { ReactComponent as AdminIcon } from "../../assets/svg/game-controller.svg"
 
 const Navbar = ({ hidden }) => {
+  const [sidebar, setSidebar] = useState(false)
+
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -23,9 +27,10 @@ const Navbar = ({ hidden }) => {
 
   const toggleDropDown = () => {
     setShowDropDown(!showDropDown)
-    console.log("Toggle is working")
     console.log(showDropDown)
   }
+
+  const showSidebar = () => setSidebar(!sidebar)
   return (
     <div className="navbar">
       <div className="navbar__search">
@@ -38,6 +43,7 @@ const Navbar = ({ hidden }) => {
         </NavLink>
         <span className="navbar__logo-span">Tokyo</span>
       </div>
+
       <div className="navbar__user-account">
         <ul className="navbar__user-account-list">
           <li className="navbar__user-account-item">
@@ -107,6 +113,10 @@ const Navbar = ({ hidden }) => {
             </NavLink>
           </li>
         </ul>
+      </div>
+      <div className="burger-menu">
+        {" "}
+        <BurgerMenu className="burger-menu__icon" onClick={showSidebar} />
       </div>
     </div>
   )

@@ -3,8 +3,9 @@ import { Route } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
 import { logout } from "../../redux/actions/userActions"
+import { ReactComponent as CloseIcon } from "../../assets/svg/cross.svg"
 
-const MobileNav = () => {
+const Sidebar = () => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -15,6 +16,7 @@ const MobileNav = () => {
 
   return (
     <div className="mobile-nav">
+      <CloseIcon />
       <ul className="mobile-nav__list">
         <li className="mobile-nav__list__item">
           <Link
@@ -73,4 +75,4 @@ const MobileNav = () => {
   )
 }
 
-export default MobileNav
+export default Sidebar

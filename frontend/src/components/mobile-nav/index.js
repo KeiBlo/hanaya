@@ -1,2 +1,2 @@
-import MobileNav from "./mobile-nav"
-export default MobileNav
+import Sidebar from "./sidebar"
+export default Sidebar
