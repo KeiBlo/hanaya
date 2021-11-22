@@ -1,11 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { Route } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
 import { logout } from "../../redux/actions/userActions"
 import { ReactComponent as CloseIcon } from "../../assets/svg/cross.svg"
 
-const Sidebar = () => {
+const Sidebar = ({ showSidebar, sidebar }) => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -15,8 +15,10 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="mobile-nav">
-      <CloseIcon />
+    <div className={sidebar ? "mobile-nav active" : "mobile-nav"}>
+      <div className="close-btn-wrapper">
+        <CloseIcon className="close-btn-wrapper__icon" onClick={showSidebar} />
+      </div>
       <ul className="mobile-nav__list">
         <li className="mobile-nav__list__item">
           <Link
@@ -49,27 +51,58 @@ const Sidebar = () => {
             Congradulations
           </Link>
         </li>
-        <li className="mobile-nav__list__item">
-          <Link to="/profile" className="mobile-nav__list__item--link">
-            Profile
-          </Link>
-        </li>
+        {userInfo ? (
+          <Fragment>
+            {userInfo && userInfo.isAdmin && (
+              <Fragment>
+                <li className="mobile-nav__list__item">
+                  <Link
+                    className="mobile-nav__list__item--link"
+                    to="/admin/userlist">
+                    Users
+                  </Link>
+                </li>
+                <li className="mobile-nav__list__item">
+                  <Link
+                    className="mobile-nav__list__item--link"
+                    to="/admin/productlist">
+                    Products
+                  </Link>
+                </li>
+                <li className="mobile-nav__list__item">
+                  <Link
+                    className="mobile-nav__list__item--link"
+                    to="/admin/orderList">
+                    Orders
+                  </Link>
+                </li>
+              </Fragment>
+            )}
+            <li className="mobile-nav__list__item">
+              <Link to="/profile" className="mobile-nav__list__item--link">
+                Profile
+              </Link>
+            </li>
 
-        <li className="mobile-nav__list__item">
-          <Link to="/cart" className="mobile-nav__list__item--link">
-            Cart
-          </Link>
-        </li>
-        <li onClick={logoutHandler} className="mobile-nav__list__item">
-          <Link to="/" className="mobile-nav__list__item--link">
-            Logout
-          </Link>
-        </li>
-        <li className="mobile-nav__list__item">
-          <Link to="/login" className="mobile-nav__list__item--link">
+            <li className="mobile-nav__list__item">
+              <Link to="/cart" className="mobile-nav__list__item--link">
+                Cart
+              </Link>
+            </li>
+            <li onClick={logoutHandler} className="mobile-nav__list__item">
+              <Link to="/" className="mobile-nav__list__item--link">
+                Logout
+              </Link>
+            </li>
+          </Fragment>
+        ) : (
+          <NavLink
+            activeClassName="is-active"
+            className="mobile-nav__list__item--link"
+            to="/login">
             Sign In
-          </Link>
-        </li>
+          </NavLink>
+        )}
       </ul>
     </div>
   )

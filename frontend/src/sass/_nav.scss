@@ -160,19 +160,23 @@
 //MOBILE NAVIGATION
 
 .mobile-nav {
+  padding: 0 0 3rem 0;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  background-color: $color-secondary;
+  z-index: 1;
   &__list {
     padding: 3rem 0;
-    display: flex;
-
-    flex-wrap: nowrap;
-    width: 50rem;
-    flex-direction: column;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: $color-secondary;
-
     &__item {
       padding: 0.8rem 0.5rem;
       &--link {
@@ -181,6 +185,32 @@
         font-weight: 500;
         line-height: 1.166667;
       }
+      &--link:hover {
+        background-color: #1a83ff;
+      }
     }
   }
+
+  .close-btn-wrapper {
+    width: 100%;
+    z-index: 3;
+    padding: 1rem;
+    position: absolute;
+
+    &__icon {
+      padding: 0.1rem;
+      position: relative;
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      fill: #ffff;
+      margin-right: 0.2rem;
+      z-index: 2;
+    }
+  }
+}
+
+.mobile-nav.active {
+  right: 0;
+  transition: 350ms;
 }

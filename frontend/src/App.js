@@ -27,6 +27,7 @@ import DeliveryMethodsScreen from "./screens/DeliveryMethodsScreen"
 
 import Navigation from "./components/navbar"
 
+import Sidebar from "./components/mobile-nav"
 const App = () => {
   return (
     <Router>
