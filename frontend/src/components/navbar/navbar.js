@@ -1,18 +1,18 @@
-import React, { useState, Fragment } from "react"
-import { Route } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
-import { logout } from "../../redux/actions/userActions"
-import SearchBox from "../search-box"
-import Dropdown from "../dropdown"
-import Sidebar from "../sidebar"
+import React, { useState, useEffect, Fragment } from 'react'
+import { Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, NavLink } from 'react-router-dom'
+import { logout } from '../../redux/actions/userActions'
+import SearchBox from '../search-box'
+import Dropdown from '../dropdown'
+import Sidebar from '../sidebar'
 
-import { ReactComponent as BurgerMenu } from "../../assets/svg/menu.svg"
-import { ReactComponent as CartIcon } from "../../assets/svg/cart.svg"
-import { ReactComponent as UserIcon } from "../../assets/svg/user.svg"
-import { ReactComponent as AdminIcon } from "../../assets/svg/game-controller.svg"
+import { ReactComponent as BurgerMenu } from '../../assets/svg/menu.svg'
+import { ReactComponent as CartIcon } from '../../assets/svg/cart.svg'
+import { ReactComponent as UserIcon } from '../../assets/svg/user.svg'
+import { ReactComponent as AdminIcon } from '../../assets/svg/game-controller.svg'
 
-const Navbar = ({ hidden }) => {
+const Navbar = () => {
   const [sidebar, setSidebar] = useState(false)
   const [adminMenu, setAdminMenu] = useState(false)
 
@@ -31,6 +31,7 @@ const Navbar = ({ hidden }) => {
   const toggleSidebar = () => {
     setSidebar(!sidebar)
   }
+
   return (
     <Fragment>
       <Sidebar toggleSidebar={toggleSidebar} sidebar={sidebar} />
@@ -58,7 +59,9 @@ const Navbar = ({ hidden }) => {
                           <AdminIcon className="navbar__icon" />
                           <span onClick={toggleAdminMenu}> Admin</span>
                         </div>
-                        {adminMenu ? <Dropdown /> : null}
+                        {adminMenu ? (
+                          <Dropdown setAdminMenu={setAdminMenu} />
+                        ) : null}
                       </li>
                     </Fragment>
                   )}
@@ -100,7 +103,7 @@ const Navbar = ({ hidden }) => {
             </li>
             <li className="navigation__item">
               <NavLink to="/category/newbaby" activeClassName="is-active">
-                {" "}
+                {' '}
                 New Baby
               </NavLink>
             </li>
@@ -124,7 +127,7 @@ const Navbar = ({ hidden }) => {
           </ul>
         </div>
         <div className="burger-menu">
-          {" "}
+          {' '}
           <BurgerMenu
             className="burger-menu__icon"
             onClick={(e) => toggleSidebar(e)}

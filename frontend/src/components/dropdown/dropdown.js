@@ -1,9 +1,34 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
-const Dropdown = () => {
+const Dropdown = ({ setAdminMenu }) => {
+  const [refVisible, setRefVisible] = useState(false)
+
+  const menuRef = useRef()
+
+  useEffect(() => {
+    if (!refVisible) {
+      return
+    }
+    let handler = (event) => {
+      if (!menuRef.current.contains(event.target)) {
+        setAdminMenu(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  })
+
   return (
-    <div className="dropdown">
+    <div
+      className="dropdown"
+      ref={(el) => {
+        menuRef.current = el
+        setRefVisible(!!el)
+      }}>
       <div className="dropdown-nav-wrapper">
         <ul className="dropdown-nav">
           <li className="dropdown-nav__item">
