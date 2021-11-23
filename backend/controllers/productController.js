@@ -1,21 +1,34 @@
-import Product from "../models/productModel.js"
-import asyncHandler from "express-async-handler"
+import Product from '../models/productModel.js'
+import asyncHandler from 'express-async-handler'
 
-//@desc Fetch all products
-//@route GET /api/products
-//@access Public
+// @desc    Fetch all products
+// @route   GET /api/products
+// @access  Public
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 8
   const page = Number(req.query.pageNumber) || 1
 
+  const count = await Product.count()
+  const products = await Product.find({})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
+})
+
+//@desc Fetch  products by category
+//@route GET /api/products/category
+//@access Public
+const getProductsByCategory = asyncHandler(async (req, res) => {
+  const pageSize = 8
+  const page = Number(req.query.pageNumber) || 1
+
   const categoryName = req.path
-    .replace(/\//g, "")
-    .replace("category", "")
-    .split("&")[0]
+    .replace(/\//g, '')
+    .replace('category', '')
+    .split('&')[0]
 
   const count = await Product.count({ category: categoryName })
-  console.log(count)
-  console.log(categoryName)
 
   const products = await Product.find({ category: categoryName })
     .limit(pageSize)
@@ -24,7 +37,7 @@ const getProducts = asyncHandler(async (req, res) => {
   if (products.length > 0) {
     res.json({ products, page, pages: Math.ceil(count / pageSize) })
   } else {
-    res.status(404).json({ message: "Product not found" })
+    res.status(404).json({ message: 'Product not found' })
   }
 })
 
@@ -39,7 +52,7 @@ const searchProducts = asyncHandler(async (req, res) => {
     ? {
         name: {
           $regex: req.query.keyword,
-          $options: "i",
+          $options: 'i',
         },
       }
     : {}
@@ -52,7 +65,7 @@ const searchProducts = asyncHandler(async (req, res) => {
   if (products.length > 0) {
     res.json({ products, page, pages: Math.ceil(count / pageSize) })
   } else {
-    res.status(404).json({ message: "Product not found" })
+    res.status(404).json({ message: 'Product not found' })
   }
 })
 
@@ -64,7 +77,7 @@ const getProductById = asyncHandler(async (req, res) => {
   if (product) {
     res.json(product)
   } else {
-    res.status(404).json({ message: "Product not found" })
+    res.status(404).json({ message: 'Product not found' })
   }
 })
 
@@ -84,9 +97,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (product) {
     await product.remove()
-    res.json({ message: "Product removed" })
+    res.json({ message: 'Product removed' })
   } else {
-    res.status(404).json({ message: "Product not found" })
+    res.status(404).json({ message: 'Product not found' })
   }
 })
 
@@ -95,16 +108,16 @@ const deleteProduct = asyncHandler(async (req, res) => {
 //@access Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: "Sample name",
+    name: 'Sample name',
     price: 0,
     user: req.user._id,
-    additionalInfo: "Sample additional info",
-    additionalImg: ["1", "2", "3"],
-    image: "/images/sample.jpg",
-    category: "Sample category",
+    additionalInfo: 'Sample additional info',
+    additionalImg: ['1', '2', '3'],
+    image: '/images/sample.jpg',
+    category: 'Sample category',
     countInStock: 0,
     numReviews: 0,
-    description: "Sample description",
+    description: 'Sample description',
   })
 
   const createdProduct = await product.save()
@@ -131,7 +144,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.json(updatedProduct)
   } else {
     res.status(404)
-    throw new Error("Product not found")
+    throw new Error('Product not found')
   }
 })
 
@@ -150,7 +163,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     if (alreadyReviewed) {
       res.status(400)
-      throw new Error("Product already reviewed")
+      throw new Error('Product already reviewed')
     }
 
     const review = {
@@ -166,16 +179,17 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
       product.reviews.length
     await product.save()
-    res.status(201).json({ message: "Review add" })
+    res.status(201).json({ message: 'Review add' })
   } else {
     res.status(404)
-    throw new Error("Product not found")
+    throw new Error('Product not found')
   }
 })
 
 export {
   getProducts,
   getProductById,
+  getProductsByCategory,
   getTopProducts,
   searchProducts,
   deleteProduct,

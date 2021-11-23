@@ -1,16 +1,16 @@
-import React, { Fragment, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import Alert from "../components/alert"
-import Spinner from "../components/spinner"
-import Pagination from "../components/pagination"
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import Alert from '../components/alert'
+import Spinner from '../components/spinner'
+import Pagination from '../components/pagination'
 import {
   listProducts,
   deleteProduct,
   createProduct,
-} from "../redux/actions/productActions"
+} from '../redux/actions/productActions'
 
-import { PRODUCT_CREATE_RESET } from "../redux/constants/productConstants"
+import { PRODUCT_CREATE_RESET } from '../redux/constants/productConstants'
 
 const AdminProductListScreen = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1
@@ -21,14 +21,14 @@ const AdminProductListScreen = ({ history, match }) => {
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
-    loaidng: loadingDelete,
+    loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
   } = productDelete
 
   const productCreate = useSelector((state) => state.productCreate)
   const {
-    loaidng: loadingCreate,
+    loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
     product: createdProduct,
@@ -39,13 +39,15 @@ const AdminProductListScreen = ({ history, match }) => {
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET })
-    if (!userInfo.isAdmin) {
-      history.push("/login")
+
+    if (!userInfo || !userInfo.isAdmin) {
+      history.push('/login')
     }
+
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts("", pageNumber))
+      dispatch(listProducts(pageNumber))
     }
   }, [
     dispatch,
@@ -58,7 +60,7 @@ const AdminProductListScreen = ({ history, match }) => {
   ])
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you  sure")) {
+    if (window.confirm('Are you sure')) {
       dispatch(deleteProduct(id))
     }
   }
@@ -68,23 +70,16 @@ const AdminProductListScreen = ({ history, match }) => {
   }
 
   return (
-    <Fragment>
-      <div>
-        <ul>
-          <li>
-            {" "}
-            <h1>Products</h1>
-          </li>
-          <li>
-            <button
-              type="button"
-              className="custom-btn"
-              onClick={createProductHandler}>
-              <i className="fas fa-plust"></i>+Create new product
-            </button>
-          </li>
-        </ul>
-      </div>
+    <div className='page-wrapper'>
+      <h1 className='page-wreapper__title'> Products</h1>
+
+      <button
+        type='button'
+        className='custom-btn'
+        onClick={createProductHandler}>
+        <i className='fas fa-plus'></i>
+        {''}Create new product
+      </button>
 
       {loadingDelete && <Spinner />}
       {errorDelete && <Alert>{errorDelete}</Alert>}
@@ -102,7 +97,8 @@ const AdminProductListScreen = ({ history, match }) => {
               <th>NAME</th>
               <th>PRICE</th>
               <th>CATEGORY</th>
-              <th>Action</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
             </tr>
           </thead>
           <tbody>
@@ -112,22 +108,27 @@ const AdminProductListScreen = ({ history, match }) => {
                 <td>{product.name}</td>
                 <td>¥{product.price}</td>
                 <td>{product.category}</td>
-
-                <Link to={`/admin/user/product/${product._id}/edit`}>
-                  <button>
-                    <i className="fas fa-edit"></i>
+                <td>
+                  <Link to={`/admin/user/product/${product._id}/edit`}>
+                    <button className='edit-btn'>
+                      <i className='fas fa-edit'></i>
+                    </button>
+                  </Link>
+                </td>
+                <td>
+                  <button
+                    onClick={() => deleteHandler(product._id)}
+                    className='delete-btn'>
+                    <i className='fas fa-trash'></i>
                   </button>
-                </Link>
-                <button onClick={() => deleteHandler(product._id)}>
-                  <i className="fas fa-trash"></i>
-                </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
       <Pagination pages={pages} page={page} isAdmin={true} />
-    </Fragment>
+    </div>
   )
 }
 

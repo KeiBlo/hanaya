@@ -1,10 +1,10 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import Product from "../components/product"
-import Spinner from "../components/spinner/spinner"
-import Alert from "../components/alert"
-import Pagination from "../components/pagination"
-import { listProducts } from "../redux/actions/productActions"
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Product from '../components/product'
+import Spinner from '../components/spinner/spinner'
+import Alert from '../components/alert'
+import Pagination from '../components/pagination'
+import { listProductsByCategory } from '../redux/actions/productActions'
 
 const ProductListScreen = ({ match }) => {
   const dispatch = useDispatch()
@@ -14,12 +14,17 @@ const ProductListScreen = ({ match }) => {
   const { loading, error, products, page, pages } = productList
 
   useEffect(() => {
-    dispatch(listProducts(match.path, pageNumber))
+    dispatch(listProductsByCategory(match.path, pageNumber))
   }, [dispatch, match.path, pageNumber])
 
+  const category = match.path
+    .replace(/\//g, '')
+    .replace('category', '')
+    .split('&')[0]
+
   return (
-    <div className="product-page">
-      <div className="product-page--wrapper">
+    <div className='product-page'>
+      <div className='product-page--wrapper'>
         {loading && products.length === 0 ? (
           <Spinner />
         ) : error ? (
@@ -31,7 +36,7 @@ const ProductListScreen = ({ match }) => {
         )}
       </div>
 
-      <Pagination pages={pages} page={page} />
+      <Pagination pages={pages} category={category} page={page} />
     </div>
   )
 }

@@ -131,7 +131,7 @@
 //ALERT
 
 .alert {
-  margin: 1rem;
+  margin: 1rem auto;
   opacity: 0.9;
   background: #fff;
   color: #000;
@@ -273,6 +273,10 @@
         margin-top: auto;
       }
     }
+  }
+  .is-active {
+    color: #fc5185;
+    cursor: pointer;
   }
 }
 

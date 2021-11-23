@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Dropdown = ({ setAdminMenu }) => {
   const [refVisible, setRefVisible] = useState(false)
@@ -24,21 +24,21 @@ const Dropdown = ({ setAdminMenu }) => {
 
   return (
     <div
-      className="dropdown"
+      className='dropdown'
       ref={(el) => {
         menuRef.current = el
         setRefVisible(!!el)
       }}>
-      <div className="dropdown-nav-wrapper">
-        <ul className="dropdown-nav">
-          <li className="dropdown-nav__item">
-            <Link to="/admin/userlist">Users</Link>
+      <div className='dropdown-nav-wrapper'>
+        <ul className='dropdown-nav'>
+          <li className='dropdown-nav__item'>
+            <NavLink to='/admin/userlist'>Users</NavLink>
           </li>
-          <li className="dropdown-nav__item">
-            <Link to="/admin/productlist">Products</Link>
+          <li className='dropdown-nav__item'>
+            <NavLink to='/admin/productlist'>Products</NavLink>
           </li>
-          <li className="dropdown-nav__item">
-            <Link to="/admin/orderList">Orders</Link>
+          <li className='dropdown-nav__item'>
+            <NavLink to='/admin/orderList'>Orders</NavLink>
           </li>
         </ul>
       </div>

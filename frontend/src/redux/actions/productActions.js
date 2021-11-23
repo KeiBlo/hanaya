@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -24,17 +24,40 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
-} from "../constants/productConstants"
-import { logout } from "./userActions"
+} from '../constants/productConstants'
+import { logout } from './userActions'
 
 export const listProducts =
-  (categoryName = "", pageNumber = "") =>
+  (pageNumber = '') =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST })
+
+      const { data } = await axios.get(`/api/products?pageNumber=${pageNumber}`)
+
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
+
+export const listProductsByCategory =
+  (categoryName = '', pageNumber = '') =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST })
 
       const { data } = await axios.get(
-        `/api/products/${categoryName}&pageNumber=${pageNumber}`
+        `/api/products${categoryName}?pageNumber=${pageNumber}`
       )
 
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
@@ -50,7 +73,7 @@ export const listProducts =
   }
 
 export const searchProducts =
-  (keyword = "", pageNumber = "") =>
+  (keyword = '', pageNumber = '') =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_SEARCH_REQUEST })
@@ -93,7 +116,7 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
 
-    const { data } = await axios.get("/api/products/top")
+    const { data } = await axios.get('/api/products/top')
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
@@ -172,7 +195,7 @@ export const createProduct = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message
-    if (message === "Not authorized, token failed") {
+    if (message === 'Not authorized, token failed') {
       dispatch(logout())
     }
     dispatch({
@@ -194,7 +217,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
@@ -232,7 +255,7 @@ export const createProductReview =
 
       const config = {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${userInfo.token}`,
         },
       }
@@ -247,7 +270,7 @@ export const createProductReview =
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message
-      if (message === "Not authorized, token failed") {
+      if (message === 'Not authorized, token failed') {
         dispatch(logout())
       }
       dispatch({
